@@ -10,7 +10,11 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const location = useLocation();
-  if (location.pathname === "/login" || location.pathname === "/signup")
+  if (
+    location.pathname === "/login" ||
+    location.pathname === "/signup" ||
+    location.pathname === "/aimatch"
+  )
     return null;
   return (
     <>

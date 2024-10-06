@@ -6,12 +6,15 @@ import searchIcon from "./searchIcon.png";
 
 import styles from "./Footer.module.css";
 import classNames from "classnames/bind";
+import { useLocation } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const location = useLocation();
+  if (location.pathname === "/aimatch") return null;
   return (
     <>
       <footer className={cx("footer")}>

@@ -20,7 +20,9 @@ function App() {
             `${
               location.pathname === "/login" || location.pathname === "/signup"
                 ? "account_wrap"
-                : "wrapper"
+                : location.pathname === "/aimatch"
+                ? "ai_wrap"
+                : "wapper"
             }`
           )}
         >

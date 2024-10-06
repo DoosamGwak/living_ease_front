@@ -3,6 +3,7 @@ import App from "../App";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
+import AIMatch from "../Pages/AIMatich/AIMatch";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
+      { path: "aimatch", element: <AIMatch /> },
     ],
   },
 ]);
