@@ -1,0 +1,89 @@
+.login-form {
+  text-align: center;
+  margin-top: 50px;
+  width: 340px;
+}
+
+.login-form h1 {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 10px;
+  border: 1px solid #888888;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.password-warning {
+  font-size: 11px;
+  color: #969696;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* 버튼 그룹 */
+.btn-container {
+  width: 340px;
+  text-align: center;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  background-color: #3265ff;
+  color: white;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background-color: #2a58e1;
+}
+
+/* 실선 */
+.divider {
+  width: 100%;
+  border-top: 1px solid #888888;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.divider span {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* 정중앙에 위치하도록 설정 */
+  background-color: #f4f4f4;
+  font-size: 13px;
+  padding: 0 5px;
+  top: -8px;
+  color: #888888;
+}
+
+/* 구글 로그인 버튼 */
+.google-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: white;
+  color: black;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #888888;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.google-btn:hover {
+  background-color: #fbfbfb;
+}

@@ -1,0 +1,53 @@
+/* 네브바 */
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 265px;
+}
+
+.back-arrow {
+  position: absolute;
+  top: -33px; /* 네비게이션 바와 같은 비율 */
+  left: -45px; /* 위치를 좌우 중앙에서 조정 */
+  cursor: pointer;
+}
+
+.back-arrow img {
+  width: 24px;
+}
+
+.navbar {
+  background-color: unset;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+  width: 50%; /* 크기를 50%로 균등 설정 */
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  transition: border-bottom 0.3s ease;
+  border-bottom: 3px solid #d0d0d0; /* 밑줄 표시 */
+}
+
+.navbar a span {
+  display: inline-block;
+  padding: 20px 40px; /* 내부 텍스트 공간을 넓게 설정 (padding을 사용하여 한 줄로 표시) */
+}
+
+/* active 상태와 hover 상태 */
+.navbar a.active,
+.navbar a:hover {
+  border-bottom: 3px solid black; /* 밑줄 표시 */
+}
+
+/* active 선이 앞에 오도록 설정 */
+.navbar a.active {
+  z-index: 2;
+}

@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.wrapper {
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 70px); /* footer 높이만큼 계산 */
+  padding-bottom: 70px; /* 푸터 높이만큼 패딩 설정 */
+}
+
+.account_wrap {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url("./Components/AccountNavbar/AI_background.png") no-repeat
+    center center;
+  background-size: cover;
+  margin-top: 0;
+}
+
+.account_wrap::-webkit-scrollbar {
+  display: none;
+}
