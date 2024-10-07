@@ -8,9 +8,10 @@ const cx = classNames.bind(styles);
 
 interface AIQsModel {
   data: AIQModel;
+  onChange: () => void;
 }
 
-export default function QRadioBox({ data }: AIQsModel) {
+export default function QRadioBox({ data, onChange }: AIQsModel) {
   const [value, setValue] = useState<string>("");
   const onClick = (e: SyntheticEvent) => {
     setValue((e.target as HTMLDivElement).innerText);
@@ -24,9 +25,9 @@ export default function QRadioBox({ data }: AIQsModel) {
 
         {data.answer &&
           data.answer.map((answer) => (
-            <div className={cx("button")} onClick={(e) => onClick(e)}>
+            <button className={cx("button")} onClick={(e) => onClick(e)}>
               {answer.content}
-            </div>
+            </button>
           ))}
       </div>
     </>

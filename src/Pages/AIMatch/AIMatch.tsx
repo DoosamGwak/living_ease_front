@@ -49,7 +49,9 @@ const AIMatch = (props: Props) => {
   const handleAnswers = (form: answerInputs) => {
     console.log(form.answer1);
   };
-
+  const onChange = (e: ) => {
+    console.log(e);
+  };
   return (
     <>
       <>
@@ -75,7 +77,7 @@ const AIMatch = (props: Props) => {
             <QRadioBox
               data={qData}
               {...register("answer1")}
-              onChange={(e) => onChange(e)}
+              onChange={(e: any) => onChange(e)}
             />
           </>
         ))}
