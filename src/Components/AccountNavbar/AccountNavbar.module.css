@@ -10,7 +10,7 @@
 
 .back-arrow {
   position: absolute;
-  top: -33px; /* 네비게이션 바와 같은 비율 */
+  top: 30px; /* 네비게이션 바와 같은 비율 */
   left: -45px; /* 위치를 좌우 중앙에서 조정 */
   cursor: pointer;
 }
@@ -21,6 +21,7 @@
 
 .navbar {
   background-color: unset;
+  display: flex;
 }
 
 .navbar a {
@@ -38,7 +39,7 @@
 
 .navbar a span {
   display: inline-block;
-  padding: 20px 40px; /* 내부 텍스트 공간을 넓게 설정 (padding을 사용하여 한 줄로 표시) */
+  padding: 20px 0px; /* 내부 텍스트 공간을 넓게 설정 (padding을 사용하여 한 줄로 표시) */
 }
 
 /* active 상태와 hover 상태 */

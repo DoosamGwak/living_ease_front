@@ -9,6 +9,7 @@ import axios from "axios";
 type UserContextType = {
   user: UserProfile | null;
   access: string | null;
+  refresh: string | null;
   signupUser: (
     email: string,
     nickname: string,
@@ -27,13 +28,15 @@ const UserContext = createContext<UserContextType>({} as UserContextType);
 export const UserProvider = ({ children }: Props) => {
   const navigate = useNavigate();
   const [access, setAccess] = useState<string | null>(null);
+  const [refresh, setRefresh] = useState<string | null>(null);
   const [user, setUser] = useState<UserProfile | null>(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const user = localStorage.getItem("user");
     const access = localStorage.getItem("access");
-    if (user && access) {
+    const refresh = localStorage.getItem("access");
+    if (user && access && refresh) {
       setUser(JSON.parse(user));
       setAccess(access);
       axios.defaults.headers.common["Authorization"] = "Bearer " + access;
@@ -57,6 +60,7 @@ export const UserProvider = ({ children }: Props) => {
           };
           localStorage.setItem("user", JSON.stringify(userObj));
           setAccess(res?.data.access!);
+          setRefresh(res?.data.refresh!);
           setUser(userObj!);
           toast.success("Login Success!");
           navigate("/");
@@ -77,6 +81,7 @@ export const UserProvider = ({ children }: Props) => {
           };
           localStorage.setItem("user", JSON.stringify(userObj));
           setAccess(res?.data.access!);
+          setRefresh(res?.data.refresh!);
           setUser(userObj!);
           toast.success("Login Success!");
           navigate("/");
@@ -100,7 +105,15 @@ export const UserProvider = ({ children }: Props) => {
 
   return (
     <UserContext.Provider
-      value={{ loginUser, user, access, logout, isLoggedIn, signupUser }}
+      value={{
+        loginUser,
+        user,
+        access,
+        refresh,
+        logout,
+        isLoggedIn,
+        signupUser,
+      }}
     >
       {isReady ? children : null}
     </UserContext.Provider>

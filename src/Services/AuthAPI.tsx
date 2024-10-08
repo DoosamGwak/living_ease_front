@@ -9,7 +9,6 @@ export const loginAPI = async (email: string, password: string) => {
       email: email,
       password: password,
     });
-    console.log(data);
     return data;
   } catch (error) {
     handleError(error);

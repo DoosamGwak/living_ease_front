@@ -3,10 +3,10 @@ import categoryIcon from "./categoryIcon.png";
 import homeIcon from "./homeIcon.png";
 import loginIcon from "./loginIcon.png";
 import searchIcon from "./searchIcon.png";
-
 import styles from "./Footer.module.css";
 import classNames from "classnames/bind";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../../Context/useAuth";
 
 const cx = classNames.bind(styles);
 
@@ -14,25 +14,33 @@ type Props = {};
 
 const Footer = (props: Props) => {
   const location = useLocation();
+  const { isLoggedIn, logout, user } = useAuth();
   if (location.pathname === "/aimatch") return null;
   return (
     <>
       <footer className={cx("footer")}>
-        <a href="home.html">
+        <Link to="">
           <img src={homeIcon} alt="홈 아이콘" />홈
-        </a>
-        <a href="category.html">
+        </Link>
+        <Link to="">
           <img src={categoryIcon} alt="카테고리 아이콘" />
           카테고리
-        </a>
-        <a href="search.html">
+        </Link>
+        <Link to="">
           <img src={searchIcon} alt="검색 아이콘" />
           검색
-        </a>
-        <a href="login.html">
-          <img src={loginIcon} alt="로그인 아이콘" />
-          로그인/가입
-        </a>
+        </Link>
+        {isLoggedIn() ? (
+          <Link to="/" onClick={logout}>
+            <img src={loginIcon} alt="로그아웃 아이콘" />
+            {user?.nickname}
+          </Link>
+        ) : (
+          <Link to="login">
+            <img src={loginIcon} alt="로그인 아이콘" />
+            로그인/가입
+          </Link>
+        )}
       </footer>
     </>
   );

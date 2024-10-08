@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import AIMatch from "../Pages/AIMatch/AIMatch";
+import AIRecommend from "../Pages/AIRecommend/AIRecommend";
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       { path: "aimatch", element: <AIMatch /> },
+      { path: "airecommend", element: <AIRecommend /> },
     ],
   },
 ]);

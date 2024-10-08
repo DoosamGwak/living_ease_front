@@ -19,13 +19,13 @@ const Navbar = (props: Props) => {
   return (
     <>
       <div className={cx("navbar")}>
-        <Link to={"home"}>
+        <Link to={""}>
           <img src={logoDark} alt="로고" />
         </Link>
       </div>
 
       <div className={cx("menu-bar")}>
-        <Link to={"home"} className="active">
+        <Link to={""} className="active">
           홈
         </Link>
         <Link to="">위치서비스</Link>

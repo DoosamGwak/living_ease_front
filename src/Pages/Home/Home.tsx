@@ -7,7 +7,9 @@ const cx = classNames.bind(styles);
 function Home() {
   return (
     <>
-      <div className={cx("pet-family")}></div>
+      <Link to="aimatch">
+        <div className={cx("pet-family")}></div>
+      </Link>
 
       <div className={cx("content")}>
         <div className={cx("section")}>

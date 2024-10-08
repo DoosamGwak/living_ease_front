@@ -176,7 +176,7 @@
   margin: 0 auto;
 }
 
-.slider-container input[type="range"] {
+.slider-input {
   width: 100%;
 }
 
