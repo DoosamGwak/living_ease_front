@@ -15,43 +15,45 @@ const cx = classNames.bind(styles);
 
 type Props = {};
 
-type answerInputs = {
-  answer1: string;
-};
-
 const message_require = "* 문항에 대한 응답이 필요합니다.";
-
-const validation = Yup.object().shape({
-  answer1: Yup.string().required(message_require),
-});
 
 const AIMatch = (props: Props) => {
   useEffect(() => {
     const getQuestionsData = async () => {
       const res = await AIQGetAPI();
       setQuestionsData(res?.data);
+      {
+        res && res?.data.map(() => validation);
+      }
     };
     getQuestionsData();
   }, []);
 
   const [questionsData, setQuestionsData] = useState<AIQModel[]>();
 
+  const [yupValidation, setYupValidation] = useState();
+
+  const SetYupValidationLength = (x: number) => {};
+
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm<answerInputs>({
+  } = useForm({
     mode: "onSubmit",
-    resolver: yupResolver(validation),
   });
 
-  const handleAnswers = (form: answerInputs) => {
-    console.log(form.answer1);
+  const handleAnswers = (form: any) => {};
+
+  const setAnswer = (qPk: any, answer: string) => {
+    setValue(qPk, answer);
   };
-  const onChange = (e: ) => {
-    console.log(e);
-  };
+
+  const validation = Yup.object().shape({
+    answer1: Yup.string().required(message_require),
+  });
+
   return (
     <>
       <>
@@ -70,18 +72,25 @@ const AIMatch = (props: Props) => {
           <p>당신의 라이프스타일과 취향을 고려하여 반려동물을 추천해드려요</p>
         </div>
       </>
-      <form onSubmit={handleSubmit(handleAnswers)}>
-        {questionsData?.map((qData) => (
-          <>
-            <input type="hidden" id="answer1" />
-            <QRadioBox
-              data={qData}
-              {...register("answer1")}
-              onChange={(e: any) => onChange(e)}
-            />
-          </>
-        ))}
-      </form>
+      <div className={cx("content")}>
+        <form onSubmit={handleSubmit(handleAnswers)}>
+          {questionsData?.map((qData) => (
+            <>
+              <input type="hidden" {...register(`answer${qData.pk}`)} />
+              <QRadioBox data={qData} setAnswer={setAnswer} />
+            </>
+          ))}
+          <div className={cx("submitBtnWarp")}>
+            <p>
+              결과를 출력하는데 <br />
+              3분 정도 시간이 소요될 수 있습니다
+            </p>{" "}
+            <button type="submit" id="submitBtn" className={cx("submitBtn")}>
+              제출하기
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

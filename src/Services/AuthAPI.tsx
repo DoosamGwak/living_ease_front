@@ -1,31 +1,33 @@
 import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { UserProfileToken } from "../Models/User";
+import { api } from "./ApiURL";
 
-const api = "l";
-
-export const loginAPI = async (username: string, password: string) => {
+export const loginAPI = async (email: string, password: string) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "account/login", {
-      username: username,
+    const data = await axios.post<UserProfileToken>(api + "/accounts/login/", {
+      email: email,
       password: password,
     });
+    console.log(data);
     return data;
   } catch (error) {
     handleError(error);
   }
 };
 
-export const registerAPI = async (
+export const signupAPI = async (
   email: string,
-  username: string,
-  password: string
+  nickname: string,
+  password: string,
+  password2: string
 ) => {
   try {
-    const data = await axios.post<UserProfileToken>(api + "account/register", {
+    const data = await axios.post<UserProfileToken>(api + "/accounts/signup/", {
       email: email,
-      username: username,
+      nickname: nickname,
       password: password,
+      password2: password2,
     });
     return data;
   } catch (error) {

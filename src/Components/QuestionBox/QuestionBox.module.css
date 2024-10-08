@@ -1,0 +1,69 @@
+.questions {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.content .questions h4,
+.content .questions h2 {
+  margin-left: 15px;
+  text-align: left;
+  margin-block: 0em;
+}
+
+.content .questions h4 {
+  font-size: 15px;
+  color: #aaaaaa;
+}
+
+.content .questions h2 {
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.button {
+  width: 450px;
+  height: 80px;
+  margin-left: 15px;
+  margin-top: 10px;
+  background-color: white;
+  border: 2px solid #cccccc;
+  font-size: 18px;
+  color: #666666;
+  text-align: left;
+  padding-left: 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  border-color: #007aff;
+  color: #007aff;
+}
+
+.button.active {
+  border-color: #007aff;
+  color: #007aff;
+}
+
+.button.active:before {
+  content: "✔";
+  color: #007aff;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.btnEx2 {
+  margin-left: auto;
+  margin-right: 15px;
+  color: #aaaaaa;
+  text-align: right;
+}
+
+.btnEx {
+  margin-left: auto;
+  margin-right: 15px;
+  color: #aaaaaa;
+}
