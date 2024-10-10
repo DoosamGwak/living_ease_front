@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import LocationPage from "../Pages/LocationPage/LocationPage";
 import ComunityPage from "../Pages/ComunityPage/ComunityPage";
 import CSRPage from "../Pages/CSRPage/CSRPage";
+import { NavermapsProvider } from "react-naver-maps";
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,17 @@ export const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "info", element: <InfoBoard /> },
       { path: "comunity", element: <ComunityPage /> },
-      { path: "location", element: <LocationPage /> },
+      {
+        path: "location",
+        element: (
+          <NavermapsProvider
+            ncpClientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID}
+            // or finClientId, govClientId
+          >
+            <LocationPage />
+          </NavermapsProvider>
+        ),
+      },
       { path: "csr", element: <CSRPage /> },
       {
         element: <AIMnR />,
