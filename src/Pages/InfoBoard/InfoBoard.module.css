@@ -1,0 +1,178 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.pet-family {
+  width: 100%;
+  height: 500px;
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.pet-family.img1 {
+  background: url(./asset/home_background.png) no-repeat center center;
+  background-size: cover;
+}
+
+.content-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.content-info hr {
+  width: 70%;
+  border-color: #000;
+}
+
+.content-info p {
+  font-size: 15px;
+  color: #000;
+}
+
+.content-info h2 {
+  color: #000;
+}
+
+.content-info input[type="text"] {
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 20px;
+}
+
+.content-info .search-bar {
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.content-info .search-bar input[type="text"] {
+  border: none;
+  width: 100%;
+}
+
+.content-info .search-bar button {
+  position: absolute;
+  top: 25px;
+  right: 1px;
+  border: none;
+  background-color: unset;
+  background-image: url(./asset/serch_bt.png);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.content-top {
+  display: flex;
+  margin: 15px 0;
+}
+
+.content-top .row {
+  width: 25%;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+
+.content-top .row:last-child {
+  margin-right: 0;
+}
+
+.content-top .row img {
+  width: 100%;
+}
+
+.content-bottom {
+  background-color: #fff;
+  padding: 30px 20px;
+}
+
+.change-content {
+  border: none;
+  background: #f9f9f9;
+  padding: 8px 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.content-body {
+  width: 100%;
+  /* display: none; */
+}
+
+.content-body.active {
+  display: block;
+}
+
+.content-body .row {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.content-body .row h2 {
+  font-size: 17pt;
+  color: #000;
+}
+
+.content-body .row p {
+  font-size: 15px;
+  word-break: break-all;
+}
+
+.content-body .row p:last-child {
+  font-size: 13px;
+  margin-top: 32px;
+  color: #89898a;
+}
+
+.content1 .row:nth-child(1) {
+  background-image: url(./asset/training_1.png);
+  background-size: cover;
+}
+
+.content1 .row:nth-child(2) {
+  background-image: url(./asset/training_2.png);
+  background-size: cover;
+}
+
+.content1 .row:nth-child(3) {
+  background-image: url(./asset/training_3.png);
+  background-size: cover;
+}
+
+.content2 .row:nth-child(1) {
+  background-image: url(./asset/hospital_1.png);
+  background-size: cover;
+}
+
+.content2 .row:nth-child(2) {
+  background-image: url(./asset/hospital_2.png);
+  background-size: cover;
+}
+
+.content2 .row:nth-child(3) {
+  background-image: url(./asset/hospital_3.png);
+  background-size: cover;
+}
+
+@media (max-width: 500px) {
+  .content-info p {
+    font-size: 0.9rem;
+  }
+}

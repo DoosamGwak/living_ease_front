@@ -1,8 +1,13 @@
 /* 로그인 폼 */
 .login-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-div {
   text-align: center;
   margin-top: 50px;
-  width: 340px;
+  width: 100%;
 }
 
 .login-form h1 {
@@ -29,7 +34,7 @@
 
 /* 버튼 그룹 */
 .btn-container {
-  width: 340px;
+  width: 100%;
   text-align: center;
 }
 

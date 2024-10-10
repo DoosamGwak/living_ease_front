@@ -1,5 +1,3 @@
-import { number } from "yup"
-
 export type AIQModel = {
     pk: number
     type: string
@@ -14,11 +12,11 @@ export type AIAModel = {
     content: string
 }
 
-export type AIRModel = {
-    recommendations: DogRModel[]
+export type AIRsModel = {
+    pets: [AIRModel,AIRModel ]
 }
 
-export type DogRModel = {
+export type AIRModel = {
     num: number
     name: string
     category: string

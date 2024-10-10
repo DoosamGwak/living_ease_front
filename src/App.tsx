@@ -16,7 +16,11 @@ function App() {
   return (
     <>
       <UserProvider>
-        <div className={cx("container")}>
+        <div
+          className={cx(
+            `${location.pathname === "/aimatch" ? "ai_container" : "container"}`
+          )}
+        >
           <div
             className={cx(
               `${
@@ -25,7 +29,7 @@ function App() {
                   ? "account_wrap"
                   : location.pathname === "/aimatch"
                   ? "ai_wrap"
-                  : "wapper"
+                  : "wrapper"
               }`
             )}
           >

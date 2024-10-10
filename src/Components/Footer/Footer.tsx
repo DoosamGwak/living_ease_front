@@ -1,8 +1,8 @@
 import React from "react";
-import categoryIcon from "./categoryIcon.png";
-import homeIcon from "./homeIcon.png";
-import loginIcon from "./loginIcon.png";
-import searchIcon from "./searchIcon.png";
+import categoryIcon from "./asset/categoryIcon.png";
+import homeIcon from "./asset/homeIcon.png";
+import loginIcon from "./asset/loginIcon.png";
+import searchIcon from "./asset/searchIcon.png";
 import styles from "./Footer.module.css";
 import classNames from "classnames/bind";
 import { Link, useLocation } from "react-router-dom";

@@ -1,5 +1,5 @@
 import React from "react";
-import backIcon from "./backIcon.png";
+import backIcon from "./asset/backIcon.png";
 import styles from "./AccountNavbar.module.css";
 import classNames from "classnames/bind";
 import { Link, useLocation, useNavigate } from "react-router-dom";

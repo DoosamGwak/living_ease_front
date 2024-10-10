@@ -1,23 +1,21 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import * as Yup from "yup";
-import logoDark from "./logoDark.png";
+import React, { useEffect, useState } from "react";
+import logoDark from "./asset/logoDark.png";
 import styles from "./AIMatch.module.css";
 import classNames from "classnames/bind";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Link, useNavigate } from "react-router-dom";
 import { AIQGetAPI } from "../../Services/AiAPI";
 import { AIQModel } from "../../Models/AIQ";
 import QRadioBox from "../../Components/QuestionBox/QuestionBox";
 import QRangeBox from "../../Components/QuestionRangeBox/QuestionRangeBox";
+import { useForm } from "react-hook-form";
+import { useAIRec } from "../../Context/useAI";
+import { AnyObject } from "yup";
 
 const cx = classNames.bind(styles);
 
 type Props = {};
 
-const message_require = "* 문항에 대한 응답이 필요합니다.";
-
-const AIMatch = (props: Props) => {
+function AIMatch(props: Props) {
   useEffect(() => {
     const getQuestionsData = async () => {
       const res = await AIQGetAPI();
@@ -25,22 +23,18 @@ const AIMatch = (props: Props) => {
     };
     getQuestionsData();
   }, []);
-
   const [questionsData, setQuestionsData] = useState<AIQModel[]>();
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({
-    mode: "onSubmit",
-  });
-
-  const handleAnswers = (form: any) => {};
-  const setAnswer = (qPk: any, answer: string) => {
-    setValue(qPk, answer);
+  } = useForm();
+  const { getRecommend } = useAIRec();
+  const onSubmit = (data: AnyObject) => {
+    getRecommend(data.user, data.pet);
   };
-
+  const [title, setTitle] = useState<string>("");
   return (
     <>
       <>
@@ -60,35 +54,25 @@ const AIMatch = (props: Props) => {
         </div>
       </>
       <div className={cx("content")}>
-        <form onSubmit={handleSubmit(handleAnswers)}>
-          <div className={cx("questions")}>
-            {questionsData?.map((qData) => (
-              <>
-                {qData.content_type === "RANGE" ? (
-                  <>
-                    <h4>{qData.title}</h4>
-                    <h2>{qData.content}</h2>
-                    <div className={cx("slider-container")}>
-                      <input
-                        type="range"
-                        min={1}
-                        max={5}
-                        className={cx("slider-input")}
-                        {...register(`answer${qData.pk}`)}
-                      />
-                      <QRangeBox data={qData} />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <h4>{qData.title}</h4>
-                    <QRadioBox data={qData} setAnswer={setAnswer} />
-                    <input type="hidden" {...register(`answer${qData.pk}`)} />
-                  </>
-                )}
-              </>
-            ))}
-          </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {questionsData?.map((Q) =>
+            Q && Q.content_type === "RANGE" ? (
+              <QRangeBox
+                register={register}
+                Q={Q}
+                setValue={setValue}
+                key={Q.pk}
+              />
+            ) : (
+              <QRadioBox
+                register={register}
+                Q={Q}
+                setValue={setValue}
+                errors={errors}
+                key={Q.pk}
+              />
+            )
+          )}
           <div className={cx("submitBtnWarp")}>
             <p>
               결과를 출력하는데 <br />
@@ -102,6 +86,6 @@ const AIMatch = (props: Props) => {
       </div>
     </>
   );
-};
+}
 
 export default AIMatch;

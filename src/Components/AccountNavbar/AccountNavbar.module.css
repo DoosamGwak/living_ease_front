@@ -1,17 +1,8 @@
-/* 네브바 */
-.navbar-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 265px;
-}
-
+/* 왼쪽 화살표 아이콘 (네비게이션 바와 함께 위치 조정) */
 .back-arrow {
   position: absolute;
-  top: 30px; /* 네비게이션 바와 같은 비율 */
-  left: -45px; /* 위치를 좌우 중앙에서 조정 */
+  top: 0; /* 네비게이션 바와 같은 비율 */
+  left: -28px; /* 위치를 좌우 중앙에서 조정 */
   cursor: pointer;
 }
 
@@ -19,9 +10,20 @@
   width: 24px;
 }
 
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 70%;
+  margin: 40px auto 0;
+}
+
 .navbar {
   background-color: unset;
-  display: flex;
+  position: unset;
+  width: 70%;
 }
 
 .navbar a {
@@ -39,7 +41,7 @@
 
 .navbar a span {
   display: inline-block;
-  padding: 20px 0px; /* 내부 텍스트 공간을 넓게 설정 (padding을 사용하여 한 줄로 표시) */
+  padding: 20px 0; /* 내부 텍스트 공간을 넓게 설정 (padding을 사용하여 한 줄로 표시) */
 }
 
 /* active 상태와 hover 상태 */

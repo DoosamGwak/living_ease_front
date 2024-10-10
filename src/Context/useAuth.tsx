@@ -100,6 +100,8 @@ export const UserProvider = ({ children }: Props) => {
     localStorage.removeItem("user");
     setUser(null);
     setAccess("");
+    axios.defaults.headers.delete;
+    // common["Authorization"]
     navigate("/");
   };
 

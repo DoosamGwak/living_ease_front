@@ -32,8 +32,8 @@ const Login = (props: Props) => {
     loginUser(form.email, form.password);
   };
   return (
-    <form onSubmit={handleSubmit(handleLogin)}>
-      <div className={cx("login-form")}>
+    <form onSubmit={handleSubmit(handleLogin)} className={cx("login-form")}>
+      <div className={cx("login-div")}>
         <h1>로그인</h1>
         <input type="email" placeholder="이메일" {...register("email")} />
         {errors.email ? (

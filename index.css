@@ -4,6 +4,7 @@ html {
   padding: 0;
   height: 100%;
   font-family: "Pretendard Variable", sans-serif;
+  display: grid;
 }
 
 @media screen and (max-width: 500px) {
