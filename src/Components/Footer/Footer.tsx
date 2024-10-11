@@ -9,9 +9,7 @@ import { useAuth } from "../../Context/useAuth";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   const location = useLocation();
   const { isLoggedIn, logout, user } = useAuth();
   if (location.pathname === "/aimatch") return null;

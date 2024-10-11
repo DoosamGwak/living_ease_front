@@ -1,35 +1,12 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { NaverMap, useNavermaps } from "react-naver-maps";
 
 export default function CustomNaverMap() {
   const navermaps = useNavermaps();
 
-  const [zoom, setZoom] = useState(13);
-
-  const [draggable, setDraggable] = useState(true);
-  const [disableKineticPan, setDisableKineticPan] = useState(true);
-  const [tileTransition, setTileTransition] = useState(true);
-  const [minZoom, setMinZoom] = useState(7);
-  const [scaleControl, setScaleControl] = useState(true);
-
   const handleZoomChanged = useCallback((zoom: any) => {
     console.log(`zoom: ${zoom}`);
   }, []);
-
-  const normalBtnStyle = {
-    backgroundColor: "#fff",
-    border: "solid 1px #333",
-    outline: "0 none",
-    borderRadius: "5px",
-    boxShadow: "2px 2px 1px 1px rgba(0, 0, 0, 0.5)",
-    margin: "0 5px 5px 0",
-  };
-
-  const selectedBtnStyle = {
-    ...normalBtnStyle,
-    backgroundColor: "#2780E3",
-    color: "white",
-  };
 
   return (
     <>
@@ -51,25 +28,25 @@ export default function CustomNaverMap() {
         defaultZoom={13}
         onZoomChanged={handleZoomChanged}
         // 지도 인터랙션 옵션
-        draggable={draggable}
-        pinchZoom={draggable}
-        scrollWheel={draggable}
-        keyboardShortcuts={draggable}
-        disableDoubleTapZoom={!draggable}
-        disableDoubleClickZoom={!draggable}
-        disableTwoFingerTapZoom={!draggable}
+        draggable={true}
+        pinchZoom={true}
+        scrollWheel={true}
+        keyboardShortcuts={true}
+        disableDoubleTapZoom={!true}
+        disableDoubleClickZoom={!true}
+        disableTwoFingerTapZoom={!true}
         // 관성 드래깅 옵션
-        disableKineticPan={disableKineticPan}
+        disableKineticPan={true}
         // 타일 fadeIn 효과
-        tileTransition={tileTransition}
+        tileTransition={true}
         // min/max 줌 레벨
-        minZoom={minZoom}
+        minZoom={10}
         maxZoom={21}
         // 지도 컨트롤
-        scaleControl={scaleControl}
-        logoControl={scaleControl}
-        mapDataControl={scaleControl}
-        mapTypeControl={scaleControl}
+        scaleControl={true}
+        logoControl={true}
+        mapDataControl={true}
+        mapTypeControl={true}
         // zoomControl={scaleControl}
       />
     </>

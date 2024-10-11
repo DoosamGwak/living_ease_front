@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Login.module.css";
 import classNames from "classnames/bind";
 import * as Yup from "yup";
@@ -7,8 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 const cx = classNames.bind(styles);
-
-type Props = {};
 
 type LoginFormsInputs = {
   email: string;
@@ -20,7 +17,7 @@ const validation = Yup.object().shape({
   password: Yup.string().required("패스워드을 입력해주세요."),
 });
 
-const Login = (props: Props) => {
+const Login = () => {
   const { loginUser } = useAuth();
   const {
     register,
