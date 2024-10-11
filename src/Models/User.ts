@@ -8,4 +8,4 @@ export type UserProfileToken = {
   export type UserProfile = {
     nickname: string;
     email: string;
-  };
+  }; 

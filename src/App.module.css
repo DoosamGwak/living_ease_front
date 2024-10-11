@@ -10,7 +10,7 @@
   display: flex;
   width: 100%;
   height: 100%;
-  max-width: 1200px;
+  max-width: 500px;
 }
 
 .wrapper {
@@ -57,14 +57,26 @@
   display: none; /* Chrome, Safari 스크롤바 숨기기 */
 }
 
-@media screen and (max-width: 500px) {
-  .ai_wrap {
-    width: 400px;
-  }
+.position{
+  display: flex;
+  flex-direction: row-reverse;
 }
+
+.top-bt{
+  width: 50px;
+  position: fixed;
+  bottom: 70px;
+}
+
+.top-bt img{
+  width: 50px;
+  height: 50px;
+}
+
 @media screen and (max-width: 1000px) {
   .ai_container {
     justify-content: center;
+    margin: 0 auto;
   }
 
   .ai_wrap {
@@ -72,3 +84,10 @@
     margin: 0 auto;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .ai_wrap {
+    width: 100%;
+  }
+}
+
