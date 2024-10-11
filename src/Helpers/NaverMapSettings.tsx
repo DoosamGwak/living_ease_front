@@ -41,48 +41,7 @@ export default function CustomNaverMap() {
           zIndex: 1000,
           padding: 5,
         }}
-      >
-        <button
-          style={draggable ? selectedBtnStyle : normalBtnStyle}
-          onClick={() => {
-            setDraggable((prev) => !prev);
-          }}
-        >
-          지도 인터렉션
-        </button>
-        <button
-          style={!disableKineticPan ? selectedBtnStyle : normalBtnStyle}
-          onClick={() => {
-            setDisableKineticPan((prev) => !prev);
-          }}
-        >
-          관성 드래깅
-        </button>
-        <button
-          style={tileTransition ? selectedBtnStyle : normalBtnStyle}
-          onClick={() => {
-            setTileTransition((prev) => !prev);
-          }}
-        >
-          타일 fadeIn 효과
-        </button>
-        <button
-          style={scaleControl ? selectedBtnStyle : normalBtnStyle}
-          onClick={() => {
-            setScaleControl((prev) => !prev);
-          }}
-        >
-          모든 지도 컨트롤
-        </button>
-        <button
-          style={normalBtnStyle}
-          onClick={() => {
-            setMinZoom((prev) => (prev === 10 ? 7 : 10));
-          }}
-        >
-          최소/최대 줌 레벨: {minZoom} ~ 21
-        </button>
-      </div>
+      ></div>
       <NaverMap
         zoomControl
         zoomControlOptions={{

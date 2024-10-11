@@ -66,7 +66,7 @@ export const UserProvider = ({ children }: Props) => {
           navigate("/");
         }
       })
-      .catch((e) => toast.warning("Server error occured"));
+      .catch((e) => toast.warning("Server error occured", e));
   };
 
   const loginUser = async (email: string, password: string) => {
@@ -87,7 +87,7 @@ export const UserProvider = ({ children }: Props) => {
           navigate("/");
         }
       })
-      .catch((e) => toast.warning("Server error occured"));
+      .catch((e) => toast.warning("Server error occured", e));
   };
 
   const isLoggedIn = () => {
@@ -95,12 +95,12 @@ export const UserProvider = ({ children }: Props) => {
   };
 
   const logout = () => {
+    axios.defaults.headers.delete;
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     localStorage.removeItem("user");
     setUser(null);
     setAccess("");
-    axios.defaults.headers.delete;
     // common["Authorization"]
     navigate("/");
   };

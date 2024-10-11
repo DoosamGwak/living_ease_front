@@ -28,7 +28,6 @@ export const router = createBrowserRouter([
         element: (
           <NavermapsProvider
             ncpClientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID}
-            // or finClientId, govClientId
           >
             <LocationPage />
           </NavermapsProvider>
@@ -38,7 +37,10 @@ export const router = createBrowserRouter([
       {
         element: <AIMnR />,
         children: [
-          { path: "aimatch", element: <AIMatch /> },
+          {
+            path: "aimatch",
+            element: <AIMatch />,
+          },
           {
             path: "airecommend",
             element: (

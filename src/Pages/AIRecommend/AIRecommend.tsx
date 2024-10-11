@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 import styles from "./AIRecommend.module.css";
 import { useAIRec } from "../../Context/useAI";
@@ -7,15 +6,9 @@ import dog from "./asset/goldenRetriver.jpg";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const AIRecommendPage = (props: Props) => {
+const AIRecommendPage = () => {
   const { recommend1 } = useAIRec();
 
-  // const [dog, setDog] = useState<AIRModel | null>(null);
-  // useEffect(() => {
-  //   setDog(recommend1);
-  // }, []);
   return (
     <div className={cx("content")}>
       <div className={cx("section")}>

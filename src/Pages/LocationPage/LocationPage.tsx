@@ -1,10 +1,7 @@
-import React from "react";
-import { NaverMap, Container as MapDiv } from "react-naver-maps";
+import { Container as MapDiv } from "react-naver-maps";
 import CustomNaverMap from "../../Helpers/NaverMapSettings";
 
-type Props = {};
-
-const LocationPage = (props: Props) => {
+const LocationPage = () => {
   return (
     <div>
       <MapDiv

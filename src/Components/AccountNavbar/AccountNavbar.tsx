@@ -1,4 +1,3 @@
-import React from "react";
 import backIcon from "./asset/backIcon.png";
 import styles from "./AccountNavbar.module.css";
 import classNames from "classnames/bind";
@@ -6,9 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const AccountNavbar = (props: Props) => {
+const AccountNavbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const onClick = () => {
