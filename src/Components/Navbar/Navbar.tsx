@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logoDark from "./asset/logoDark.png";
+import logoDark from "./asset/logoWhite.png";
 import styles from "./Navbar.module.css";
 import classNames from "classnames/bind";
 

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,12 +31,18 @@ function App() {
                   : "wrapper"
               }`
             )}
+            id="wrapper"
           >
             <AccountNavbar />
             <Navbar />
             <Outlet />
             <ToastContainer />
           </div>
+          <div className={cx("position")}>
+            <a href="#wrapper" className={cx("top-bt")}>
+                <img src="/src/asset/top_bt2.png" alt=""/>
+            </a>
+        </div>
         </div>
         <Footer />
       </UserProvider>
