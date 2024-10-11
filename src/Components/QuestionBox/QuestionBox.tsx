@@ -1,8 +1,9 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./QuestionBox.module.css";
 import classNames from "classnames/bind";
 import { AIAModel, AIQModel } from "../../Models/AIQ";
 import { ErrorMessage } from "@hookform/error-message";
+import useRefAnime from "../../Context/useRefAnime";
 
 const cx = classNames.bind(styles);
 
@@ -24,9 +25,22 @@ export default function QRadioBox({ register, Q, setValue, errors }: QBoxProp) {
     setValue(name, e.currentTarget.value);
   };
   const type = Q && Q.type === "사용자" ? "user" : "pet";
+  const refAnime = useRef<HTMLDivElement>(null);
+  const onScreen = useRefAnime(refAnime, { threshold: 0.5 });
   return (
     <>
-      <div className={cx("questions")}>
+      <div
+        className={cx("questions")}
+        ref={refAnime}
+        style={
+          onScreen
+            ? {
+                opacity: "1",
+                transform: "translateY(0)",
+              }
+            : {}
+        }
+      >
         <h2>{Q.content}</h2>
         <input
           type="hidden"
@@ -50,7 +64,7 @@ export default function QRadioBox({ register, Q, setValue, errors }: QBoxProp) {
               value={Q.content}
               className={cx(
                 "button",
-                `${active === answer.pk ? "-active" : ""}`
+                `${active === answer.pk ? "active" : ""}`
               )}
               onClick={(e) => onClick(e, answer.pk, `${type}.answer${Q.pk}`)}
             >

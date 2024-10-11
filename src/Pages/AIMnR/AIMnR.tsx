@@ -1,4 +1,3 @@
-import React from "react";
 import { AIRProvider } from "../../Context/useAI";
 import { Outlet } from "react-router-dom";
 

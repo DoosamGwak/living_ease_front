@@ -6,13 +6,6 @@
   margin: auto;
 }
 
-.ai_container {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  max-width: 1200px;
-}
-
 .wrapper {
   width: 100%;
   height: auto;
@@ -36,6 +29,13 @@
 
 .account_wrap::-webkit-scrollbar {
   display: none;
+}
+
+.ai_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
 }
 
 .ai_wrap {

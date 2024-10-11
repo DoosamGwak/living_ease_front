@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import logoDark from "./asset/logoDark.png";
+import { useEffect, useState } from "react";
+import logoLight from "./asset/logoLight.png";
 import styles from "./AIMatch.module.css";
 import classNames from "classnames/bind";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AIQGetAPI } from "../../Services/AiAPI";
 import { AIQModel } from "../../Models/AIQ";
 import QRadioBox from "../../Components/QuestionBox/QuestionBox";
@@ -13,9 +13,7 @@ import { AnyObject } from "yup";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-function AIMatch(props: Props) {
+function AIMatch() {
   useEffect(() => {
     const getQuestionsData = async () => {
       const res = await AIQGetAPI();
@@ -30,17 +28,18 @@ function AIMatch(props: Props) {
     setValue,
     formState: { errors },
   } = useForm();
+
   const { getRecommend } = useAIRec();
   const onSubmit = (data: AnyObject) => {
     getRecommend(data.user, data.pet);
   };
-  const [title, setTitle] = useState<string>("");
+  // const [title, setTitle] = useState<string>("");
   return (
     <>
       <>
         <div className={cx("navbar")}>
           <Link to="/">
-            <img src={logoDark} alt="로고" />
+            <img src={logoLight} alt="로고" />
           </Link>
         </div>
 

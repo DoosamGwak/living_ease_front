@@ -1,4 +1,3 @@
-import React from "react";
 import classNames from "classnames/bind";
 import styles from "./InfoBoard.module.css";
 import infoTopIcon1 from "./asset/info-top-001.png";
@@ -8,9 +7,7 @@ import infoTopIcon4 from "./asset/info-top-004.png";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const InfoBoard = (props: Props) => {
+const InfoBoard = () => {
   return (
     <>
       <div className={cx("pet-family", "img1")}></div>
@@ -27,19 +24,19 @@ const InfoBoard = (props: Props) => {
             <button type="button"></button>
           </div>
           <div className={cx("content-top")}>
-            <div className={cx("row")} onClick={(e) => {}}>
+            <div className={cx("row")} onClick={() => {}}>
               <img src={infoTopIcon1} alt="훈련법" />
               훈련법
             </div>
-            <div className={cx("row")} onClick={(e) => {}}>
+            <div className={cx("row")} onClick={() => {}}>
               <img src={infoTopIcon2} alt="예방접종" />
               예방접종
             </div>
-            <div className={cx("row")} onClick={(e) => {}}>
+            <div className={cx("row")} onClick={() => {}}>
               <img src={infoTopIcon3} alt="식단" />
               식단
             </div>
-            <div className={cx("row")} onClick={(e) => {}}>
+            <div className={cx("row")} onClick={() => {}}>
               <img src={infoTopIcon4} alt="용품" />
               용품
             </div>
