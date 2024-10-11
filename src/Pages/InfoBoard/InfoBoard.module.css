@@ -175,4 +175,7 @@
   .content-info p {
     font-size: 0.9rem;
   }
+  .pet-family {
+    height: 100vw;
+  }
 }
