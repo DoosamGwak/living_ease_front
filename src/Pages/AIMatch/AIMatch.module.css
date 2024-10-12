@@ -24,6 +24,8 @@
   overflow: hidden;
   background-image: url("./asset/AIDog.png");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .AI_image h1,
@@ -78,23 +80,23 @@
 }
 
 @media screen and (max-width: 500px) {
-  .button {
-    width: 350px;
-    height: 70px;
-  }
-
   .submit_button button {
     padding: 10px 50px;
-  }
-
-  .AI_image h1 {
-    font-size: 25px;
   }
 
   .AI_image p {
     font-size: 13px;
   }
+
+  .content .questions h4 {
+    font-size: 12px;
+  }
+
+  .content .questions h2 {
+    font-size: 20px;
+  }
 }
+
 @keyframes fadeInUp {
   from {
     opacity: 0;

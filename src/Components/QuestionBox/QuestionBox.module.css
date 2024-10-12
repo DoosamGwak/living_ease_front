@@ -81,14 +81,16 @@
 
 @media screen and (max-width: 500px) {
   .button {
-    width: 350px;
+    width: 80%;
     height: 70px;
+    margin: 10px auto 0;
   }
   .questions h4 {
     font-size: 12px;
   }
 
   .questions h2 {
+    width: 90%;
     font-size: 20px;
   }
 }
