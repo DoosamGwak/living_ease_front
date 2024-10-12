@@ -1,7 +1,8 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./QuestionRangeBox.module.css";
 import classNames from "classnames/bind";
 import { AIQModel } from "../../Models/AIQ";
+import useRefAnime from "../../Context/useRefAnime";
 
 const cx = classNames.bind(styles);
 
@@ -13,8 +14,16 @@ interface QRangeProp {
 
 export default function QRangeBox({ Q, setValue, register }: QRangeProp) {
   const type = Q && Q.type === "사용자" ? "user" : "pet";
+  const refAnime = useRef<HTMLDivElement>(null);
+  const onScreen = useRefAnime(refAnime, { threshold: 0.5 });
   return (
-    <div className={cx("questions")}>
+    <div
+      className={cx("questions")}
+      ref={refAnime}
+      style={{
+        animation: onScreen ? "fadeInUp 1s ease-in-out forwards" : "",
+      }}
+    >
       <h2>{Q.content}</h2>
       <div className={cx("slider-container")}>
         <input

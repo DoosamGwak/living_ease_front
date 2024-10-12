@@ -1,8 +1,6 @@
-import React from "react";
-
 type Props = {};
 
-const ComunityPage = (props: Props) => {
+const ComunityPage = () => {
   return <div>ComunityPage 개발중</div>;
 };
 

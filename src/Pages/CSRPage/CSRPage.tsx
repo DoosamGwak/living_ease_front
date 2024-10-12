@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const CSRPage = (props: Props) => {
+const CSRPage = () => {
   return <div>CSRPage 개발중</div>;
 };
 

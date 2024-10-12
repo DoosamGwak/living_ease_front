@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Signup.module.css";
 import classNames from "classnames/bind";
 import * as Yup from "yup";
@@ -24,7 +23,7 @@ const validation = Yup.object().shape({
   password2: Yup.string().required("패스워드을 입력해주세요."),
 });
 
-const Signup = (props: Props) => {
+const Signup = () => {
   const { signupUser } = useAuth();
   const {
     register,

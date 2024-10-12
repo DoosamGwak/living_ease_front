@@ -1,14 +1,11 @@
-import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logoDark from "./asset/logoDark.png";
+import logoLight from "./asset/logoLight.png";
 import styles from "./Navbar.module.css";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const location = useLocation();
   if (
     location.pathname === "/login" ||
@@ -20,7 +17,7 @@ const Navbar = (props: Props) => {
     <>
       <div className={cx("navbar")}>
         <Link to={""}>
-          <img src={logoDark} alt="로고" />
+          <img src={logoLight} alt="로고" />
         </Link>
       </div>
 

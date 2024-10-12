@@ -1,10 +1,7 @@
-import React from "react";
 import { AIRProvider } from "../../Context/useAI";
 import { Outlet } from "react-router-dom";
 
-type Props = {};
-
-const AIMnR = (props: Props) => {
+const AIMnR = () => {
   return (
     <AIRProvider>
       <Outlet />

@@ -1,4 +1,3 @@
-import React from "react";
 import categoryIcon from "./asset/categoryIcon.png";
 import homeIcon from "./asset/homeIcon.png";
 import loginIcon from "./asset/loginIcon.png";
@@ -10,9 +9,7 @@ import { useAuth } from "../../Context/useAuth";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
-const Footer = (props: Props) => {
+const Footer = () => {
   const location = useLocation();
   const { isLoggedIn, logout, user } = useAuth();
   if (location.pathname === "/aimatch") return null;
