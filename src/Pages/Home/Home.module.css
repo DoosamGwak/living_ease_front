@@ -26,6 +26,13 @@
   max-height: 325px;
 }
 
+.pet-family.unimg .pet-content {
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #000;
+}
+
 .pet-family.unimg img {
   width: 30vw;
   max-width: 140px;
@@ -184,7 +191,6 @@
   border: 1px solid #fff;
   border-radius: 18px;
   padding: 7px 17px;
-  font-size: 0.8em;
   display: inline-block;
   margin-top: 5px;
   font-size: 1em;
@@ -225,7 +231,7 @@
   padding: 25px 15px 0;
 }
 
-.info .info-section-row p {
+.info .section .info-section-row p {
   text-align: center;
   margin: 20px 0 35px;
 }
@@ -309,6 +315,9 @@
   text-align: center;
 }
 
+.bottom p {
+  color: #878787;
+}
 /* 푸터 고정 */
 
 .top-bt {
@@ -366,6 +375,11 @@
     height: auto;
     height: 75vw;
   }
+
+  .bottom p {
+    font-size: 0.75em;
+    color: #878787;
+  }
 }
 
 @media (max-width: 400px) {
@@ -382,4 +396,15 @@
 .main-content.bottom p {
   font-size: 0.75em;
   color: #878787;
+}
+
+@media (max-width: 400px) {
+  .support-bottom {
+    display: block;
+  }
+  .support-bottom .support-row-left,
+  .support-bottom .support-row-right {
+    width: calc(100vw - 80px);
+    margin: 10px 0;
+  }
 }

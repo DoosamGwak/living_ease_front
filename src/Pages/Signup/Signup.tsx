@@ -7,8 +7,6 @@ import { useForm } from "react-hook-form";
 
 const cx = classNames.bind(styles);
 
-type Props = {};
-
 type SignupFormsInputs = {
   email: string;
   nickname: string;
