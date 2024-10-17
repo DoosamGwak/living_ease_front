@@ -12,8 +12,17 @@ import customerDog from "./asset/customer_dog.png";
 import styles from "./Home.module.css";
 import classNames from "classnames/bind";
 import { useEffect, useRef } from "react";
+import ScrollIntoView from "react-scroll-into-view";
 
 const cx = classNames.bind(styles);
+
+const menuList = [
+  { id: "home", title: "홈" },
+  { id: "location", title: "위치서비스" },
+  { id: "community", title: "커뮤니티" },
+  { id: "info", title: "정보게시판" },
+  { id: "support", title: "고객지원" },
+];
 
 function Home() {
   const sectionRefs = useRef<HTMLDivElement[]>([]);
@@ -40,8 +49,19 @@ function Home() {
   }, []);
   return (
     <>
+      <div className={cx("menu-bar")}>
+        {menuList.map((menu) => (
+          <ScrollIntoView
+            selector={`#${menu.id}`}
+            style={{ display: "inline" }}
+            key={menu.id}
+          >
+            {menu.title}
+          </ScrollIntoView>
+        ))}
+      </div>
       <div className={cx("pet-family", "img1")}></div>
-      <div className={cx("pet-family", "unimg")}>
+      <div className={cx("pet-family", "unimg")} id="home">
         <img className={cx("logo-img")} src={logo} alt="로고" />
         <div className={cx("pet-title")}>
           <br />
@@ -74,7 +94,7 @@ function Home() {
             </div>
             <h2>위치서비스</h2>
             <p>매번 산책로 코스 정하는 게 고민이라면,</p>
-            <Link to="/" className={cx("content-bt")}>
+            <Link to="/location" className={cx("content-bt")}>
               추천 산책로 보러가기{">"}
             </Link>
             <div className={cx("section-content")}>
@@ -116,7 +136,7 @@ function Home() {
             <div className={cx("sub-title")}>
               <h2>커뮤니티</h2>
               <p>집사들과 소통할 수 있는 기회,</p>
-              <Link to="/" className={cx("content-bt")}>
+              <Link to="/community/tip" className={cx("content-bt")}>
                 산책메이트 구하러가기{">"}
               </Link>
             </div>
@@ -158,7 +178,7 @@ function Home() {
                   이번 예방접종은 언제지?
                 </h2>
                 <p>
-                  <Link to="/">예방접종 시기가 궁금하다면,</Link>
+                  <Link to="/info/vaccine">예방접종 시기가 궁금하다면,</Link>
                 </p>
                 <img src={info1} alt="" />
               </div>
@@ -169,7 +189,7 @@ function Home() {
                   뭐부터 해야 되죠?
                 </h2>
                 <p>
-                  <Link to="/">훈련법이 궁금하다면,</Link>
+                  <Link to="/info/training">훈련법이 궁금하다면,</Link>
                 </p>
                 <img src={info2} alt="" />
               </div>
@@ -179,7 +199,7 @@ function Home() {
                   <br />살 찌는 게 걱정인가요?
                 </h2>
                 <p>
-                  <Link to="/">건강한 식단이 궁금하다면,</Link>
+                  <Link to="/info/healthyfood">건강한 식단이 궁금하다면,</Link>
                 </p>
                 <img src={info3} alt="" />
               </div>
@@ -190,7 +210,7 @@ function Home() {
                   반려동물 장난감
                 </h2>
                 <p>
-                  <Link to="/">용품이 궁금하다면,</Link>
+                  <Link to="/info/supplies">용품이 궁금하다면,</Link>
                 </p>
                 <img src={info4} alt="" />
               </div>
@@ -211,7 +231,7 @@ function Home() {
               <br />
               이용해 주세요.
             </p>
-            <Link to="/" className={cx("support-bt")}>
+            <Link to="/support/directmsg" className={cx("support-bt")}>
               문의하러 가기 {">"}{" "}
             </Link>
             <div className={cx("support-bottom")}>

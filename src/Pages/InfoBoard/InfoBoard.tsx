@@ -4,10 +4,58 @@ import infoTopIcon1 from "./asset/info-top-001.png";
 import infoTopIcon2 from "./asset/info-top-002.png";
 import infoTopIcon3 from "./asset/info-top-003.png";
 import infoTopIcon4 from "./asset/info-top-004.png";
+import { Link, useParams } from "react-router-dom";
+import { boardListGetAPI } from "../../Services/BoardAPI";
+import { useEffect, useState } from "react";
+import { BoardListGet } from "../../Models/Board";
+import InfoCard from "../../Components/InfoCard/InfoCard";
 
 const cx = classNames.bind(styles);
 
+const INFOCATEGORY = [
+  {
+    name: "training",
+    title: "훈련법",
+    context: ["PETMILY의 새로운 소식을", "알려드립니다."],
+    link: "/info/training",
+    image: infoTopIcon1,
+  },
+  {
+    name: "vaccine",
+    title: "예방접종",
+    context: ["자주 묻는 질문에서", "궁금한 내용을 확인해 보세요.."],
+    link: "/info/vaccine",
+    image: infoTopIcon2,
+  },
+  {
+    name: "healthyfood",
+    title: "식단",
+    context: ["PETMILY 서비스 사용법을", "쉽고 빠르게 알려드릴게요."],
+    link: "/info/healthyfood",
+    image: infoTopIcon3,
+  },
+  {
+    name: "supplies",
+    title: "용품",
+    context: ["궁금하신 내용을 남겨주시면", "빠르게 답변 드릴게요."],
+    link: "/info/supplies",
+    image: infoTopIcon4,
+  },
+];
+
 const InfoBoard = () => {
+  const [boards, setBoards] = useState<BoardListGet[]>();
+  const { categoryName } = useParams<string>();
+  useEffect(() => {
+    if (!!categoryName) {
+      const getCategoryInit = async () => {
+        const res = await boardListGetAPI("info/" + categoryName!);
+        console.log(res?.data);
+        setBoards(res?.data);
+      };
+      getCategoryInit();
+    }
+  }, [categoryName]);
   return (
     <>
       <div className={cx("pet-family", "img1")}></div>
@@ -24,122 +72,25 @@ const InfoBoard = () => {
             <button type="button"></button>
           </div>
           <div className={cx("content-top")}>
-            <div className={cx("row")} onClick={() => {}}>
-              <img src={infoTopIcon1} alt="훈련법" />
-              훈련법
-            </div>
-            <div className={cx("row")} onClick={() => {}}>
-              <img src={infoTopIcon2} alt="예방접종" />
-              예방접종
-            </div>
-            <div className={cx("row")} onClick={() => {}}>
-              <img src={infoTopIcon3} alt="식단" />
-              식단
-            </div>
-            <div className={cx("row")} onClick={() => {}}>
-              <img src={infoTopIcon4} alt="용품" />
-              용품
-            </div>
+            {INFOCATEGORY.map((category) => (
+              <div className={cx("row")} id={category.name} key={category.name}>
+                <Link
+                  to={category.link}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <img src={category.image} alt="훈련법" />
+                  {category.title}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
         <div className={cx("content-bottom")}>
-          <select className={cx("change-content")} id="change-content">
-            <option value="1">훈련법</option>
-            <option value="2">예방접종</option>
-            <option value="3">식단</option>
-            <option value="4">용품</option>
-          </select>
-          <div className={cx("content-body", "content1")} id="content1">
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-          </div>
-          <div className={cx("content-body", "content2")} id="content2">
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-          </div>
-          <div className={cx("content-body", "content3")} id="content3">
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-          </div>
-          <div className={cx("content-body", "content4")} id="content4">
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
-            <div className={cx("row")}>
-              <h2>TITLE</h2>
-              <p>
-                CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
-              </p>
-              <p>2024.10.07</p>
-            </div>
+          <div className={cx("content-body")} id="content1">
+            {boards &&
+              boards.map((board: BoardListGet) => {
+                return <InfoCard key={board.id} data={board} />;
+              })}
           </div>
         </div>
       </div>

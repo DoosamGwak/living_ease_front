@@ -3,12 +3,11 @@ import { AIRModel } from "../Models/AIQ";
 import { AIQPostAPI } from "../Services/AiAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { AnyObject } from "yup";
 
 type AIContextType = {
   recommend1: AIRModel | null;
   recommend2: AIRModel | null;
-  getRecommend: (user: AnyObject, pet: AnyObject) => void;
+  getRecommend: (user: JSON, pet: JSON) => void;
 };
 
 type Props = { children: React.ReactNode };
@@ -31,15 +30,20 @@ export const AIRProvider = ({ children }: Props) => {
     setIsRecomendReady(true);
   }, []);
 
-  const getRecommend = async (user: AnyObject, pet: AnyObject) => {
+  const getRecommend = async (user: JSON, pet: JSON) => {
     await AIQPostAPI(user, pet)
       .then((res) => {
-        console.log(res);
         if (res) {
-          localStorage.setItem(`aiRec1`, JSON.stringify(res?.data.pets[0]));
-          localStorage.setItem(`aiRec2`, JSON.stringify(res?.data.pets[1]));
-          setRecommend1(res?.data.pets[0]);
-          setRecommend2(res?.data.pets[1]);
+          localStorage.setItem(
+            `aiRec1`,
+            JSON.stringify(res?.data.recommendations[0])
+          );
+          localStorage.setItem(
+            `aiRec2`,
+            JSON.stringify(res?.data.recommendations[1])
+          );
+          setRecommend1(res?.data.recommendations[0]);
+          setRecommend2(res?.data.recommendations[1]);
           toast.success("추천!");
           navigate("/airecommend");
         }

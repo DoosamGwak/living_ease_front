@@ -1,0 +1,142 @@
+#wrapper,
+.navbar,
+.content-info,
+.content-top {
+  background: #fafafa;
+}
+
+.content > div {
+  padding: 0 20px;
+  word-break: break-all;
+  color: #000;
+}
+.content-top {
+  font-size: 15pt;
+  color: #000;
+  font-weight: bold;
+}
+
+.content-top a {
+  text-decoration: none;
+}
+
+.content-top a img {
+  width: 25px;
+  vertical-align: bottom;
+}
+
+.user-info {
+  display: flex;
+  margin: 25px 0;
+}
+
+.user-info .left-info {
+  width: 25%;
+}
+
+.user-info .left-info img {
+  width: calc(100% - 12px);
+  min-width: 68px;
+  border-radius: 50vw;
+  border: 1px solid #eee;
+  padding: 6px;
+}
+
+.right-info {
+  width: calc(75% - 15px);
+  margin-left: 15px;
+}
+
+.right-info h3 {
+  margin-bottom: 10px;
+}
+
+.right-info p {
+  color: #80b44d;
+  font-size: 0.7em;
+  margin-top: 0;
+}
+
+.content-info a {
+  text-decoration: none;
+  color: #000;
+}
+
+.move-top-body {
+  margin-bottom: 20px;
+}
+
+.move-top-body img {
+  width: 100%;
+}
+
+.move-body {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.move-body td {
+  padding: 12px 0;
+  text-align: center;
+  border-right: 1px solid #ddd;
+}
+
+.move-body tr:first-child td {
+  border-bottom: 1px solid #ddd;
+}
+
+.move-body tr td:last-child {
+  border-right: 0;
+}
+
+.move-body td img {
+  width: 25%;
+  margin: 15px auto;
+  display: block;
+}
+
+.content-bottom a {
+  display: flex;
+  text-decoration: none;
+  color: #000;
+  background: #e6eaee;
+  border-radius: 20px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.support-bottom-left {
+  width: 80%;
+}
+
+.support-bottom-left h3 {
+  padding: 0px 24px;
+  color: #878888;
+  font-size: 1em;
+  margin: 15px 0 3px;
+}
+
+.support-bottom-left h3 span {
+  color: #b8babb;
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.support-bottom-left p {
+  padding: 0px 24px;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0 0 15px;
+}
+
+.support-bottom-right {
+  width: 20%;
+  text-align: center;
+  transform: translate(15%, 32%);
+}
+
+.support-bottom-right img {
+  width: 20px;
+  transform: scaleX(-1);
+}

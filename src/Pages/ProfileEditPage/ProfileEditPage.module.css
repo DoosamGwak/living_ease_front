@@ -1,0 +1,134 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content-top {
+  background: #fafafa;
+}
+
+.content-top {
+  font-size: 15pt;
+  color: #000;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.content-top a {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+}
+
+.content-top a img {
+  width: 25px;
+}
+
+.content-top a h2 {
+  margin: 11px 0;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.profile-body,
+.profile-bottom {
+  display: block;
+  padding: 30px;
+}
+
+.profile-body .profile-img {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.profile_image {
+  display: none;
+}
+
+.profile-body .profile-img img {
+  width: 100%;
+}
+
+.profile_img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.data-body {
+  margin-top: 20px;
+}
+
+.data-body .rows {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.data-body .rows label {
+  font-size: 0.8em;
+  display: block;
+  color: #a5a5a5;
+}
+
+.data-body .rows label span {
+  font-size: 0.8em;
+  display: inline-block;
+  color: #d2d2d2;
+  margin-left: 2px;
+}
+
+.data-body .rows p {
+  color: #a6a6a6;
+  background: #f9f9f9;
+  margin: 4px 0;
+  padding: 10px;
+  border-radius: 14px;
+}
+
+.data-body .rows input,
+.data-body .rows select {
+  border: 0;
+  border-bottom: 1px solid #000;
+  color: #000;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+
+.data-body .rows input[type="select"] {
+  width: 100%;
+  border: 1px solid #eee;
+}
+
+.data-body .rows a {
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+}
+
+.data-body .rows a img {
+  width: 20px;
+  transform: scaleX(-1);
+}
+
+.data-body .rows div {
+  width: 47%;
+  float: left;
+}
+
+.data-body .rows div:last-child {
+  margin-left: 6%;
+}
+
+.profile-bottom p,
+.profile-bottom p button {
+  font-size: 0.8em;
+  color: #c5c5c5;
+}
+
+.profile-bottom p button {
+  padding: 0;
+  background: none;
+  border: 0;
+  float: right;
+}
