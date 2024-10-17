@@ -1,4 +1,4 @@
-.header {
+.chatHeader {
   width: 100%;
   max-width: 500px;
   height: 40px;
@@ -10,11 +10,6 @@
   position: fixed;
   top: 0;
   z-index: 100;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  padding: 10px; */
 }
 
 .chat-box p {
@@ -149,7 +144,7 @@
   background-color: black;
 }
 
-input[type="text"] {
+.input-box input[type="text"] {
   flex-grow: 1;
   padding: 10px;
   background-color: #383838;
@@ -161,11 +156,11 @@ input[type="text"] {
   color: #d3d3d3; /* Placeholder 글자색 */
 }
 
-input[type="text"]::placeholder {
+.input-box input[type="text"]::placeholder {
   color: #a9a9a9; /* 밝은 회색 */
 }
 
-button {
+.input-box button {
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
@@ -176,6 +171,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.input-box button:hover {
   background-color: #e0d4e3;
 }

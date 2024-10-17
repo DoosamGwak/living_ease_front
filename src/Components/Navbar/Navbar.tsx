@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <div className={cx("navbar")}>
-        <Link to={""}>
+        <Link to={"/home"}>
           <img src={logoLight} alt="로고" />
         </Link>
       </div>

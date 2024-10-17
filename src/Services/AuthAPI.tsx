@@ -47,6 +47,18 @@ export const logoutAPI = async (refresh: string) => {
   }
 };
 
+export const getProfileAPI = async (nickname: string) => {
+  try {
+    console.log(nickname);
+    const res = await axios.get(api + `/accounts/${nickname}`);
+    console.log(res);
+    return res;
+  } catch (error) {
+    handleError(error);
+    console.log(error);
+  }
+};
+
 // google social-login
 export const handleGoogleCallback = async ({ request }: any) => {
   // Exchange callback's code for JWT tokens

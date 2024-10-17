@@ -3,29 +3,37 @@ import classNames from "classnames/bind";
 import moveBtn from "./asset/move_bt.png";
 import profileImgBtn from "./asset/profile_img_bt.png";
 import info1 from "./asset/info_001.png";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../Context/useAuth";
+import { getProfileAPI } from "../../Services/AuthAPI";
+import { UserProfileDetail } from "../../Models/User";
 
 const cx = classNames.bind(styles);
 
-type LoginFormsInputs = {
-  email: string;
-  password: string;
+type ProfileEditInput = {
+  profile_image: string | null;
+  nickname: string;
+  age: number | null;
+  gender: string | null;
 };
 
-const validation = Yup.object().shape({
-  email: Yup.string().required("이메일을 입력해주세요."),
-  password: Yup.string().required("패스워드을 입력해주세요."),
-});
-
 const ProfileEditPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormsInputs>({ resolver: yupResolver(validation) });
+  const { user } = useAuth();
+  const [userProfile, setUserProfile] = useState<UserProfileDetail>();
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const userObj = await user;
+      if (userObj) {
+        const res = await getProfileAPI(userObj?.nickname);
+        setUserProfile(res?.data);
+      }
+    };
+    getUserInfo();
+  }, []);
+  const { register, handleSubmit } = useForm<ProfileEditInput>();
+  const handleProfileSubmit = () => {};
   return (
     <div className={cx("content")}>
       <div className={cx("content-top")}>
@@ -34,10 +42,13 @@ const ProfileEditPage = () => {
           <h2>프로필 수정</h2>
         </Link>
       </div>
-      <form action="" className={cx("profile-body")}>
+      <form
+        className={cx("profile-body")}
+        onSubmit={handleSubmit(handleProfileSubmit)}
+      >
         <div className={cx("profile-img")}>
           <img src={info1} alt="프로필 사진" className={cx("profile_img")} />
-          <label for="profile_image">
+          <label htmlFor="profile_image">
             <img
               src={profileImgBtn}
               alt="프로필 사진 수정 버튼"
@@ -46,27 +57,37 @@ const ProfileEditPage = () => {
           </label>
           <input
             type="file"
-            name="profile_image"
             className={cx("profile_image")}
+            {...register("profile_image")}
           />
         </div>
         <div className={cx("data-body")}>
           <div className={cx("rows")}>
-            <label for="email">이메일</label>
-            <p>rlaalswn0613@naver.com</p>
+            <label htmlFor="email">이메일</label>
+            <p>{userProfile?.email}</p>
           </div>
           <div className={cx("rows")}>
-            <label for="name">이름</label>
-            <input type="text" name="name" id="name" value="김민주" />
+            <label htmlFor="name">이름</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={userProfile?.nickname}
+            />
           </div>
           <div className={cx("rows")}>
-            <label for="nickname">
+            <label htmlFor="nickname">
               닉네임 <span>(필수)</span>
             </label>
-            <input type="text" name="nickname" id="nickname" value="델리만주" />
+            <input
+              type="text"
+              id="nickname"
+              value={userProfile?.nickname}
+              {...register("nickname")}
+            />
           </div>
           <div className={cx("rows")}>
-            <label for="password">
+            <label htmlFor="password">
               비밀번호 <span>(필수)</span>
             </label>
             <input
@@ -81,22 +102,22 @@ const ProfileEditPage = () => {
           </div>
           <div className={cx("rows")}>
             <div>
-              <label for="age">나이</label>
+              <label htmlFor="age">나이</label>
               <input
                 type="number"
-                name="age"
                 id="age"
-                value="26"
+                value={`${userProfile?.age}`}
                 min="1"
                 max="100"
+                {...register("age")}
               />
             </div>
             <div>
-              <label for="gender">성별</label>
-              <select name="gender" id="gender">
+              <label htmlFor="gender">성별</label>
+              <input type="select" id="gender" {...register("gender")}>
                 <option value="F">여성</option>
                 <option value="M">남성</option>
-              </select>
+              </input>
             </div>
           </div>
         </div>

@@ -11,13 +11,27 @@ import moveBtn from "./asset/move_bt.png";
 import info1 from "./asset/info_001.png";
 import { useAuth } from "../../Context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getProfileAPI } from "../../Services/AuthAPI";
+import { UserProfileDetail } from "../../Models/User";
 
 const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
   const { user } = useAuth();
-  const profileObj = user;
+  const [userProfile, setUserProfile] = useState<UserProfileDetail>();
   const navigate = useNavigate();
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const userObj = user;
+      if (userObj) {
+        const res = await getProfileAPI(userObj?.nickname);
+        setUserProfile(res?.data);
+      }
+    };
+    getUserInfo();
+  }, []);
+
   return (
     <div className={cx("content")}>
       <div className={cx("content-top")}>
@@ -29,8 +43,8 @@ const ProfilePage = () => {
             <img src={info1} alt="프로필 사진" />
           </div>
           <div className={cx("right-info")}>
-            <h3>{profileObj?.nickname}</h3>
-            <p>{profileObj?.email}</p>
+            <h3>{userProfile?.nickname}</h3>
+            <p>{userProfile?.email}</p>
           </div>
         </div>
       </div>

@@ -50,6 +50,7 @@ const InfoBoard = () => {
     if (!!categoryName) {
       const getCategoryInit = async () => {
         const res = await boardListGetAPI("info/" + categoryName!);
+        console.log(res?.data);
         setBoards(res?.data);
       };
       getCategoryInit();
@@ -72,7 +73,7 @@ const InfoBoard = () => {
           </div>
           <div className={cx("content-top")}>
             {INFOCATEGORY.map((category) => (
-              <div className={cx("row")} id={category.name}>
+              <div className={cx("row")} id={category.name} key={category.name}>
                 <Link
                   to={category.link}
                   style={{ textDecoration: "none", color: "black" }}

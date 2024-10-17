@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <>
       <footer className={cx("footer")}>
-        <Link to="/">홈</Link>
+        <Link to="/home">홈</Link>
         <a onClick={onModal}>카테고리</a>
         <Link to="/aichat">
           <img src={AIIcon} alt="팻밀리 AI" />

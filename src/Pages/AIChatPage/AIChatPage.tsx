@@ -3,13 +3,14 @@ import styles from "./AIChatPage.module.css";
 import petmily from "./asset/petmily.png";
 import menuIcon from "./asset/menu.png";
 import chatgptIcon from "./asset/chatgpt-profile.png";
-import loadingDog from "./asset/loadingDog.gif";
+import chatSpinner from "./asset/chatSpinner.gif";
 import { useEffect, useRef, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { AIChatPostAPI } from "../../Services/AiAPI";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,7 @@ const validation = Yup.object().shape({
 });
 
 const AIChatPage = () => {
+  const navigate = useNavigate();
   const [inputMsg, setInputMsg] = useState<string[]>([
     "vvuioengdaguhbhkuqbino-5437yfb784bi",
   ]);
@@ -59,14 +61,18 @@ const AIChatPage = () => {
   useEffect(() => {}, []);
   return (
     <>
-      <div className={cx("header")}>
+      <div className={cx("chatHeader")}>
         <img
           src={menuIcon}
           className={cx("menu-icon")}
           alt="Menu Icon"
           id="menu-button"
         />
-        <h2 className={cx("logo")} id="refresh-button">
+        <h2
+          className={cx("logo")}
+          id="refresh-button"
+          onClick={() => navigate("/home")}
+        >
           <img src={petmily} alt="Petmily Logo" />
         </h2>
       </div>
@@ -100,7 +106,7 @@ const AIChatPage = () => {
                       {AIMsg[idx] ? (
                         <p>{AIMsg[idx]}</p>
                       ) : loading ? (
-                        <img src={loadingDog} />
+                        <img src={chatSpinner} />
                       ) : (
                         <p>{AIMsg[idx]}</p>
                       )}

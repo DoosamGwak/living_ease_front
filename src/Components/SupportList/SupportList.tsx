@@ -62,10 +62,10 @@ const SupportList = () => {
           </ul>
         </div>
         <div className={cx("content-body", "active")} id="content1">
-          {SUPPORTCATEGORY.map((category) =>
+          {SUPPORTCATEGORY.map((category, idx) =>
             category.name === categoryName ? (
               <>
-                <h3 key={category.name}>
+                <h3 key={category.name + `${idx}`}>
                   {category.context[0]}
                   <br />
                   {category.context[1]}

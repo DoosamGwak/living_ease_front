@@ -27,6 +27,7 @@ export const boardDeleteAPI = async () => {
 export const boardListGetAPI = async (category: string) => {
   try {
     const res = await axios.get<BoardListGet[]>(api + `/boards/${category}/`);
+    console.log(res);
     return res;
   } catch (error) {
     console.log(error);

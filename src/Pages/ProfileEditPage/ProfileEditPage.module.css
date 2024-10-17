@@ -95,7 +95,7 @@
   padding: 10px;
 }
 
-.data-body .rows select {
+.data-body .rows input[type="select"] {
   width: 100%;
   border: 1px solid #eee;
 }

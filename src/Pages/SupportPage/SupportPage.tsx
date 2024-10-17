@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 const SupportPage = () => {
   return (
     <>
-      <div className={cx("pet-family img1")}></div>
+      <div className={cx("pet-family", "img1")}></div>
       <div className={cx("content")}>
         <div className={cx("content-info")}>
           <h2>고객지원</h2>

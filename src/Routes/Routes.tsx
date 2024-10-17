@@ -17,6 +17,7 @@ import ProfilePage from "../Pages/ProfilePage/ProfilePage";
 import AIChatPage from "../Pages/AIChatPage/AIChatPage";
 import IntroPage from "../Pages/IntroPage/IntroPage";
 import ProfileEditPage from "../Pages/ProfileEditPage/ProfileEditPage";
+import BoardWritePage from "../Pages/BoardWritePage/BoardWritePage";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,7 @@ export const router = createBrowserRouter([
       { path: "info/:categoryName", element: <InfoBoard /> },
       { path: "community/:categoryName", element: <CommunityPage /> },
       { path: "support/:categoryName", element: <SupportPage /> },
+      { path: "community/board/write", element: <BoardWritePage /> },
       {
         path: "location",
         element: (
