@@ -1,0 +1,59 @@
+.top {
+  width: 25%;
+  margin: 5px auto;
+}
+
+.top img {
+  width: 100%;
+}
+
+.intro-text-box {
+  padding: 0 30px;
+}
+
+.intro-text-box h2 {
+  padding-left: 20px;
+  color: #000;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
+.intro-text-box img {
+  width: 100%;
+  max-width: 310px;
+}
+
+.bottom {
+  display: grid;
+  align-items: end;
+  min-height: calc(100vh - 380px);
+}
+
+.bottom > div {
+  margin: 10px auto;
+  color: #000;
+  font-weight: bold;
+  width: calc(100% - 80px);
+  height: 100px;
+}
+
+.bottom .intro-bt {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.bottom .intro-bt.login-bt {
+  background: #f8f7f1;
+  color: #747473;
+}
+
+.bottom .intro-bt.ai-metch-bt {
+  background: #c5e282;
+  color: #1d2214;
+}

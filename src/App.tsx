@@ -15,22 +15,24 @@ function App() {
   return (
     <>
       <UserProvider>
-        <div
-          className={cx(
-            `${location.pathname === "/aimatch" ? "ai_container" : "container"}`
-          )}
-        >
+        <div className={cx("container")}>
           <div
             className={cx(
               `${
                 location.pathname === "/login" ||
                 location.pathname === "/signup"
                   ? "account_wrap"
-                  : location.pathname === "/aimatch"
-                  ? "ai_wrap"
+                  : location.pathname === "/aichat"
+                  ? "aichatWrap"
                   : "wrapper"
               }`
             )}
+            style={
+              location.pathname === "/profile" ||
+              location.pathname === "/profile/edit"
+                ? { background: "#fafafa" }
+                : {}
+            }
           >
             <AccountNavbar />
             <Navbar />

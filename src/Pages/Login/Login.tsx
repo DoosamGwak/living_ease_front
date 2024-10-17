@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useAuth } from "../../Context/useAuth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { googleCallbackUri, googleClientId } from "../../Services/config.ts";
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +19,7 @@ const validation = Yup.object().shape({
 });
 
 const Login = () => {
+  const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
   const { loginUser } = useAuth();
   const {
     register,
@@ -25,6 +27,9 @@ const Login = () => {
     formState: { errors },
   } = useForm<LoginFormsInputs>({ resolver: yupResolver(validation) });
 
+  const onLoginGoogle = () => {
+    window.location.href = googleSignInUrl;
+  };
   const handleLogin = (form: LoginFormsInputs) => {
     loginUser(form.email, form.password);
   };
@@ -60,7 +65,11 @@ const Login = () => {
         <div className={cx("divider")}>
           <span>또는</span>
         </div>
-        <button className={cx("google-btn")} type="button">
+        <button
+          className={cx("google-btn")}
+          type="button"
+          onClick={onLoginGoogle}
+        >
           구글 계정으로 로그인하기
         </button>
       </div>

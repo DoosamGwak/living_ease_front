@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { UserProfile } from "../Models/User";
 import { useNavigate } from "react-router-dom";
-import { loginAPI, signupAPI } from "../Services/AuthAPI";
+import { loginAPI, logoutAPI, signupAPI } from "../Services/AuthAPI";
 import { toast } from "react-toastify";
 import React from "react";
 import axios from "axios";
@@ -35,11 +35,13 @@ export const UserProvider = ({ children }: Props) => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     const access = localStorage.getItem("access");
-    const refresh = localStorage.getItem("access");
+    const refresh = localStorage.getItem("refresh");
     if (user && access && refresh) {
       setUser(JSON.parse(user));
       setAccess(access);
-      axios.defaults.headers.common["Authorization"] = "Bearer " + access;
+      setAccess(refresh);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${access}`;
+      console.log(axios.defaults.headers.common["Authorization"]);
     }
     setIsReady(true);
   }, []);
@@ -58,6 +60,8 @@ export const UserProvider = ({ children }: Props) => {
             nickname: res?.data.nickname,
             email: res?.data.email,
           };
+          axios.defaults.headers.common["Authorization"] = `Bearer ${res?.data
+            .access!}`;
           localStorage.setItem("user", JSON.stringify(userObj));
           setAccess(res?.data.access!);
           setRefresh(res?.data.refresh!);
@@ -80,6 +84,8 @@ export const UserProvider = ({ children }: Props) => {
             email: res?.data.email,
           };
           localStorage.setItem("user", JSON.stringify(userObj));
+          axios.defaults.headers.common["Authorization"] = `Bearer ${res?.data
+            .access!}`;
           setAccess(res?.data.access!);
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
@@ -94,14 +100,20 @@ export const UserProvider = ({ children }: Props) => {
     return !!user;
   };
 
-  const logout = () => {
-    axios.defaults.headers.delete;
-    localStorage.removeItem("access");
-    localStorage.removeItem("refresh");
-    localStorage.removeItem("user");
-    setUser(null);
-    setAccess("");
-    // common["Authorization"]
+  const logout = async () => {
+    refresh &&
+      (await logoutAPI(refresh)
+        .then((res) => {
+          if (res?.status === 200) {
+            axios.defaults.headers.delete;
+            localStorage.removeItem("access");
+            localStorage.removeItem("refresh");
+            localStorage.removeItem("user");
+            setUser(null);
+            setAccess(null);
+          }
+        })
+        .catch((e) => toast.warning("로그아웃에 실패했습니다.", e)));
     navigate("/");
   };
 

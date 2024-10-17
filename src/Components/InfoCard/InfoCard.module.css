@@ -1,0 +1,35 @@
+.row {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.row h2 {
+  font-size: 17pt;
+  color: #000;
+}
+
+.row p {
+  font-size: 15px;
+  word-break: break-all;
+}
+.row p:last-child {
+  font-size: 13px;
+  margin-top: 32px;
+  color: #89898a;
+}
+.row:nth-child(1) {
+  background-image: url(./asset/training_1.png);
+  background-size: cover;
+}
+
+.row:nth-child(2) {
+  background-image: url(./asset/training_2.png);
+  background-size: cover;
+}
+
+.row:nth-child(3) {
+  background-image: url(./asset/training_3.png);
+  background-size: cover;
+}

@@ -13,7 +13,7 @@ export type AIAModel = {
 }
 
 export type AIRsModel = {
-    pets: [AIRModel,AIRModel ]
+    recommendations: [AIRModel,AIRModel ]
 }
 
 export type AIRModel = {
@@ -22,4 +22,9 @@ export type AIRModel = {
     category: string
     personality: string
     why: string
+}
+
+export type AIChatModel = {
+    response: string
+    session_id: string
 }

@@ -1,0 +1,203 @@
+.content-info,
+.tabs ul {
+  background: #fafafa;
+}
+
+.content-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.content-info input[type="text"] {
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 20px;
+}
+
+.content-info .search-bar {
+  border: none;
+  margin-top: 8px;
+  font-size: 17px;
+  border-radius: 30px;
+  width: 80%;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.content-info .search-bar input[type="text"] {
+  border: 1px solid #dddddd;
+  width: 100%;
+}
+
+.content-info .search-bar button {
+  position: absolute;
+  top: 25px;
+  right: 1px;
+  border: none;
+  background-color: unset;
+  background-image: url(./asset/serch_bt.png);
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+}
+
+.content-top {
+  display: flex;
+  margin: 15px 0;
+}
+
+.content-top .row {
+  width: 25%;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+
+.content-top .row:last-child {
+  margin-right: 0;
+}
+
+.content-top .row img {
+  width: 100%;
+}
+
+.content-bottom {
+  padding: 0;
+  background: #fff;
+  border-top: 3px solid #ddd;
+}
+
+.tabs ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20px;
+  margin: 0;
+}
+
+.tabs ul li {
+  width: 25%;
+  height: 50px;
+  text-align: center;
+}
+
+.tabs ul li span {
+  display: inline-block;
+  align-content: center;
+  height: 100%;
+}
+
+.tabs ul li.active span {
+  border-bottom: 2px solid #111111;
+}
+
+.content-bottom h3 {
+  padding: 10px 0px 10px 20px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.content-body {
+  width: 100%;
+  display: none;
+}
+
+.content-body.active {
+  display: block;
+}
+
+.content-body .row {
+  position: relative;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #a2a2a2;
+}
+
+.content-body .row .head {
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.content-body .row h2 {
+  color: #000;
+  margin-bottom: 0;
+}
+
+.content-body .row p.date {
+  font-size: 0.7em;
+}
+
+.content-body .row p.board-content {
+  word-break: break-all;
+  visibility: hidden;
+  display: none;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  transition: transform 0.7s ease-out, visibility 0.5s ease-out;
+}
+
+.content-body .row p.board-content.active {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+
+.onoff-bt {
+  border: none;
+  background-image: url(./asset/toggle_down.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  float: right;
+}
+
+.onoff-bt.active {
+  background-image: url(./asset/toggle_up.png);
+}
+
+.board-delet {
+  border: none;
+  background: none;
+  color: #a2a2a2;
+  text-decoration: underline;
+  float: right;
+}
+
+.board-wirtebt {
+  display: block;
+  color: #fff;
+  border-radius: 50vw;
+  padding: 10px 0;
+  width: 70%;
+  background: #000;
+  text-align: center;
+  text-decoration: none;
+  margin: 0 auto 25px;
+}
+
+#support {
+  background: #eee;
+}
+
+#support > div {
+  padding: 0 20px;
+}
+
+@media (max-width: 500px) {
+  .content-info p {
+    font-size: 0.9rem;
+  }
+  .content-body .row {
+    width: calc(100vw - 40px);
+  }
+}

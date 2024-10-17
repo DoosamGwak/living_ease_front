@@ -20,10 +20,10 @@ export default function CustomNaverMap() {
         }}
       ></div>
       <NaverMap
-        zoomControl
-        zoomControlOptions={{
-          position: navermaps.Position.TOP_RIGHT,
-        }}
+        // zoomControl
+        // zoomControlOptions={{
+        //   position: navermaps.Position.TOP_RIGHT,
+        // }}
         defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)}
         defaultZoom={13}
         onZoomChanged={handleZoomChanged}
@@ -40,14 +40,12 @@ export default function CustomNaverMap() {
         // 타일 fadeIn 효과
         tileTransition={true}
         // min/max 줌 레벨
-        minZoom={10}
-        maxZoom={21}
+        minZoom={11}
+        maxZoom={19}
         // 지도 컨트롤
         scaleControl={true}
         logoControl={true}
         mapDataControl={true}
-        mapTypeControl={true}
-        // zoomControl={scaleControl}
       />
     </>
   );

@@ -3,7 +3,7 @@ import styles from "./QuestionBox.module.css";
 import classNames from "classnames/bind";
 import { AIAModel, AIQModel } from "../../Models/AIQ";
 import { ErrorMessage } from "@hookform/error-message";
-import useRefAnime from "../../Context/useRefAnime";
+import useRefAnime from "../../Helpers/useRefAnime";
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +29,21 @@ export default function QRadioBox({ register, Q, setValue, errors }: QBoxProp) {
   const onScreen = useRefAnime(refAnime, { threshold: 0.5 });
   return (
     <>
+      {Q.pk === 7 ? (
+        <>
+          <div className={cx("section-title")}>사용자에 대하여</div>
+          <div className={cx("section-line")}></div>
+        </>
+      ) : Q.pk === 15 ? (
+        <>
+          <div className={cx("section-title")}>
+            앞으로 만날
+            <br />
+            반려동물에 대하여
+          </div>
+          <div className={cx("section-line")}></div>
+        </>
+      ) : null}
       <div
         className={cx("questions")}
         ref={refAnime}
@@ -77,6 +92,7 @@ export default function QRadioBox({ register, Q, setValue, errors }: QBoxProp) {
         name={`answer${Q.pk}`}
         render={({ message }) => <div className={cx("warning")}>{message}</div>}
       />
+      <br />
       <br />
       <br />
       <br />

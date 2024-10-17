@@ -8,7 +8,6 @@ function useRefAnime<T extends HTMLElement>(
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.map((entry) => setInViewport(entry.isIntersecting));
-      console.log(entries);
     }, options);
     const currentRef = ref.current;
     if (currentRef) {

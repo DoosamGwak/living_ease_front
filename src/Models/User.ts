@@ -5,7 +5,7 @@ export type UserProfileToken = {
     refresh: string;
   };
   
-  export type UserProfile = {
+export type UserProfile = {
     nickname: string;
     email: string;
   };

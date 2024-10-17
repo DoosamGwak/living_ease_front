@@ -9,7 +9,7 @@ const AccountNavbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/");
+    navigate(-1);
   };
   if (location.pathname === "/login" || location.pathname === "/signup") {
     return (
