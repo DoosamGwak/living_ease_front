@@ -1,10 +1,12 @@
 import classNames from "classnames/bind";
 import styles from "./BoardWritePage.module.css";
 import moveBtn from "./asset/move_bt.png";
+import { useEffect } from "react";
 
 const cx = classNames.bind(styles);
 
 const BoardWritePage = () => {
+  useEffect(() => {}, []);
   return (
     <div className={cx("content")}>
       <div className={cx("content-top")}>

@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import moveBtn from "./asset/move_bt2.png";
 import profile from "./asset/info_004.png";
 import { BoardListGet } from "../../Models/Board";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -22,9 +23,9 @@ const CommunityCard = (props: { data: BoardListGet; category: string }) => {
         <p className={cx("content-title")}>{data.title}</p>
       </div>
       <div className={cx("right-content")}>
-        <a href="#">
+        <Link to={""}>
           <img src={moveBtn} alt="이동" />
-        </a>
+        </Link>
       </div>
     </div>
   );

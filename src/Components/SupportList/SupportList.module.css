@@ -94,10 +94,13 @@
   align-content: center;
   height: 100%;
   white-space: pre-wrap;
+  color: black;
 }
 
 .tabs ul li.active span {
   border-bottom: 2px solid #111111;
+  color: black;
+  font-weight: bold;
 }
 
 .content-bottom h3 {

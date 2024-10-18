@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useRefAnime<T extends HTMLElement>(
+export default function useRefAnime<T extends HTMLElement>(
   ref: React.RefObject<T>,
   options?: IntersectionObserverInit
 ) {
@@ -21,4 +21,3 @@ function useRefAnime<T extends HTMLElement>(
   }, [options, ref]);
   return inViewport;
 }
-export default useRefAnime;

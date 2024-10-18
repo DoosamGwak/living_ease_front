@@ -5,7 +5,7 @@ import { BoardDetailGet, BoardListGet, BoardPost } from "../Models/Board";
 
 export const boardPutAPI = async (title: string, content: string) => {
   try {
-    const res = await axios.put<BoardDetailGet>(api + "boards/info/vaccine", {
+    const res = await axios.put<BoardDetailGet>(api + "boards/info/vaccine/", {
       title: title,
       content: content,
     });
@@ -37,9 +37,11 @@ export const boardListGetAPI = async (category: string) => {
 
 export const boardDetailGetAPI = async (pk: number) => {
   try {
-    const res = await axios.get<BoardDetailGet>(api + `/boards/${pk}`);
+    const res = await axios.get<BoardDetailGet>(api + `/boards/${pk}/`);
+    console.log(res);
     return res;
   } catch (error) {
+    console.log(error);
     handleError(error);
   }
 };

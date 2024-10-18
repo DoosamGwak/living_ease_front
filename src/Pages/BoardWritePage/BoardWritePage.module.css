@@ -1,0 +1,141 @@
+.content-info,
+.content-top {
+  background: #fafafa;
+}
+
+.content > div {
+  padding: 0 20px;
+}
+.content-top {
+  font-size: 15pt;
+  color: #000;
+  font-weight: bold;
+}
+
+.content-top a {
+  text-decoration: none;
+}
+
+.content-top img {
+  width: 25px;
+  vertical-align: bottom;
+}
+
+.content-info {
+  padding: 20px;
+}
+
+.content-info h2 {
+  color: #000;
+}
+
+.content-bottom label {
+  display: block;
+  color: #afafaf;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.content-bottom select {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin: 10px 0;
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+.content-bottom input {
+  width: calc(100% - 10px);
+  border: 0;
+  border-bottom: 1px solid #afafaf;
+  background: none;
+  font-size: 11pt;
+  padding: 8px 5px;
+  margin: 10px 0;
+}
+
+.content-bottom textarea {
+  width: calc(100% - 30px);
+  border: 1px solid #afafaf;
+  border-radius: 10px;
+  background: none;
+  font-size: 11pt;
+  padding: 18px 15px;
+  min-height: 20vw;
+  margin: 10px 0;
+}
+
+.content-bottom p {
+  margin-bottom: 35px;
+}
+
+.content-bottom p.board-files {
+  margin-bottom: 10px;
+}
+
+.content-bottom p.board-files label {
+  font-size: 13pt;
+  color: #000;
+}
+
+.content-bottom p.board-files label span {
+  font-size: 10pt;
+  color: #afafaf;
+}
+
+#board-picture {
+  display: none;
+}
+
+.picture-body {
+  margin-bottom: 50px;
+  display: inline-block;
+  width: 100%;
+}
+
+.picture-content {
+  width: calc(25% - 10px);
+  border: 1px solid #c4c4c4;
+  background: #eeeeee;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 37px;
+  color: #c4c4c4;
+  margin-top: 10px;
+  float: left;
+  margin-right: 10px;
+}
+
+.picture-content:nth-child(4n) {
+  margin-right: 0;
+}
+
+.board-bts {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.board-bts button {
+  width: 50%;
+  margin-right: 10px;
+  border-radius: 50vw;
+  border: 0;
+  padding: 12px 0px;
+  font-size: 13pt;
+}
+
+.board-bts button:last-child {
+  margin-right: 0px;
+}
+
+.board-censer {
+  color: #a1a1a1;
+  background: #eeeeee;
+}
+
+.board-ok {
+  color: #fff;
+  background: #000;
+}
