@@ -8,7 +8,7 @@ import AIRecommend from "../Pages/AIRecommend/AIRecommend";
 import AIMnR from "../Pages/AIMnR/AIMnR";
 import InfoBoard from "../Pages/InfoBoard/InfoBoard";
 import ProtectedRoute from "./ProtectedRoute";
-import LocationPage from "../Pages/LocationPage/LocationPage";
+// import LocationPage from "../Pages/LocationPage/LocationPage";
 import CommunityPage from "../Pages/CommunityPage/CommunityPage";
 import SupportPage from "../Pages/SupportPage/SupportPage";
 import { NavermapsProvider } from "react-naver-maps";
@@ -18,6 +18,8 @@ import AIChatPage from "../Pages/AIChatPage/AIChatPage";
 import IntroPage from "../Pages/IntroPage/IntroPage";
 import ProfileEditPage from "../Pages/ProfileEditPage/ProfileEditPage";
 import BoardWritePage from "../Pages/BoardWritePage/BoardWritePage";
+import NotYetPage from "../Pages/NotYetPage/NotYetPage";
+import BoardDetailPage from "../Pages/BoardDetailPage/BoardDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +31,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "home",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/google-callback",
@@ -54,22 +60,62 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: "info/:categoryName", element: <InfoBoard /> },
-      { path: "community/:categoryName", element: <CommunityPage /> },
-      { path: "support/:categoryName", element: <SupportPage /> },
-      { path: "community/board/write", element: <BoardWritePage /> },
+      {
+        path: "info/:categoryName",
+        element: (
+          <ProtectedRoute>
+            <InfoBoard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "community/:categoryName",
+        element: (
+          <ProtectedRoute>
+            <CommunityPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "support/:categoryName",
+        element: (
+          <ProtectedRoute>
+            <SupportPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "community/board/write",
+        element: (
+          <ProtectedRoute>
+            <BoardWritePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "board/:category/:id",
+        element: (
+          <ProtectedRoute>
+            <BoardDetailPage />
+          </ProtectedRoute>
+        ),
+      },
       {
         path: "location",
         element: (
           <NavermapsProvider
             ncpClientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID}
           >
-            <LocationPage />
+            <NotYetPage />
           </NavermapsProvider>
         ),
       },
       {
-        element: <AIMnR />,
+        element: (
+          <ProtectedRoute>
+            <AIMnR />
+          </ProtectedRoute>
+        ),
         children: [
           // {
           //   path: "aimatch",
@@ -77,17 +123,17 @@ export const router = createBrowserRouter([
           // },
           {
             path: "airecommend",
-            element: (
-              <ProtectedRoute>
-                <AIRecommend />
-              </ProtectedRoute>
-            ),
+            element: <AIRecommend />,
           },
         ],
       },
       {
         path: "aichat",
-        element: <AIChatPage />,
+        element: (
+          <ProtectedRoute>
+            <AIChatPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

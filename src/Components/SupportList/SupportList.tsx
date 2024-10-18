@@ -53,7 +53,13 @@ const SupportList = () => {
         <div className={cx("tabs")}>
           <ul>
             {SUPPORTCATEGORY.map((category) => (
-              <li className={cx("tab")} key={category.title}>
+              <li
+                className={cx(
+                  "tab",
+                  category.name === categoryName ? "active" : null
+                )}
+                key={category.title}
+              >
                 <Link to={category.link}>
                   <span>{category.title}</span>
                 </Link>

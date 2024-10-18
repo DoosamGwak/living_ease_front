@@ -2,6 +2,7 @@ export interface BoardListGet {
     "id": number
     "title": string,
     "nickname": string,
+    "content_snippet": string,
 }
 
 export interface BoardDetailGet {
@@ -10,7 +11,6 @@ export interface BoardDetailGet {
     "content": string,
     "nickname": string,
     "comments_count": number,
-    "comments": [],
     "category": string,
 }
 

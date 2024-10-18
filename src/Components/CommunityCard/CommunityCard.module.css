@@ -40,6 +40,8 @@
 .center-content p.content-title {
   color: #000;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .center-content {

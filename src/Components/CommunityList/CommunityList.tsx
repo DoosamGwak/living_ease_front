@@ -44,22 +44,26 @@ const CommunityList = () => {
       <div className={cx("content-bottom")}>
         <div className={cx("tabs")}>
           <ul>
-            {COMUNITYCATEGORY.map((sort) => {
-              return (
-                <li className={cx("tab")} key={sort.name}>
-                  <Link to={`${sort.link}`}>
-                    <span>{sort.text}</span>
-                  </Link>
-                </li>
-              );
-            })}
+            {COMUNITYCATEGORY.map((sort) => (
+              <li
+                className={cx(
+                  "tab",
+                  sort.name === categoryName ? "active" : null
+                )}
+                key={sort.name}
+              >
+                <Link to={`${sort.link}`}>
+                  <span>{sort.text}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className={cx("content-body")} id="content1">
           <div className={cx("content-head")}>
-            <a href="#" className={cx("board-wirtebt")}>
+            <Link to="/community/board/write" className={cx("board-wirtebt")}>
               글쓰기
-            </a>
+            </Link>
           </div>
           {boards &&
             boards.map((board: BoardListGet) => {

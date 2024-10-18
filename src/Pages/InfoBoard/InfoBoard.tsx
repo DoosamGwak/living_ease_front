@@ -89,7 +89,13 @@ const InfoBoard = () => {
           <div className={cx("content-body")} id="content1">
             {boards &&
               boards.map((board: BoardListGet) => {
-                return <InfoCard key={board.id} data={board} />;
+                return (
+                  <InfoCard
+                    key={board.id}
+                    data={board}
+                    category={categoryName ? categoryName : ""}
+                  />
+                );
               })}
           </div>
         </div>
