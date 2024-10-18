@@ -42,7 +42,7 @@ export const AIChatPostAPI = async (input: string) => {
       {
         input: input,
       },
-      { headers: { "Content-Type": "application/json" } }
+      { headers: { "Content-Type": "application/json" }, withCredentials: true }
     );
     return res;
   } catch (error) {
