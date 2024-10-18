@@ -37,13 +37,9 @@ export const AIQGetAPI = async () => {
 
 export const AIChatPostAPI = async (input: string) => {
   try {
-    const res = await axios.post<AIChatModel>(
-      api + "/chatbot",
-      {
-        input: input,
-      },
-      { headers: { "Content-Type": "application/json" }, withCredentials: true }
-    );
+    const res = await axios.post<AIChatModel>(api + "/chatbot", {
+      input: input,
+    });
     return res;
   } catch (error) {
     console.log(error);
