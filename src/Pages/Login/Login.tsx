@@ -5,7 +5,6 @@ import { useAuth } from "../../Context/useAuth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { googleCallbackUri, googleClientId } from "../../Services/config.ts";
-
 const cx = classNames.bind(styles);
 
 type LoginFormsInputs = {
@@ -21,6 +20,7 @@ const validation = Yup.object().shape({
 const Login = () => {
   const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
   const { loginUser } = useAuth();
+
   const {
     register,
     handleSubmit,

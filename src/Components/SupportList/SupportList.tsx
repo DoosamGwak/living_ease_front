@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 const SUPPORTCATEGORY = [
   {
     name: "notice",
-    title: "공시사항",
+    title: "공지사항",
     context: ["PETMILY의 새로운 소식을", "알려드립니다."],
     link: "/support/notice",
   },

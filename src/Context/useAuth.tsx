@@ -66,11 +66,12 @@ export const UserProvider = ({ children }: Props) => {
           setAccess(res?.data.access!);
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
-          toast.success("Login Success!");
-          navigate("/");
+          toast.success("로그인 완료");
+          console.log(axios.defaults.headers.common["Authorization"]);
         }
       })
-      .catch((e) => toast.warning("Server error occured", e));
+      .catch((e) => toast.warning("Server error occured", e))
+      .finally(() => navigate("/"));
   };
 
   const loginUser = async (email: string, password: string) => {
@@ -89,11 +90,11 @@ export const UserProvider = ({ children }: Props) => {
           setAccess(res?.data.access!);
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
-          toast.success("Login Success!");
-          navigate("/");
+          toast.success("로그인 완료");
         }
       })
-      .catch((e) => toast.warning("Server error occured", e));
+      .catch((e) => toast.warning("Server error occured", e))
+      .finally(() => navigate("/"));
   };
 
   const isLoggedIn = () => {
@@ -113,8 +114,8 @@ export const UserProvider = ({ children }: Props) => {
             setAccess(null);
           }
         })
-        .catch((e) => toast.warning("로그아웃에 실패했습니다.", e)));
-    navigate("/");
+        .catch((e) => toast.warning("로그아웃에 실패했습니다.", e))
+        .finally(() => navigate("/login")));
   };
 
   return (

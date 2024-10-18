@@ -115,21 +115,6 @@
   display: block;
 }
 
-.content2 .row:nth-child(1) {
-  background-image: url(./asset/hospital_1.png);
-  background-size: cover;
-}
-
-.content2 .row:nth-child(2) {
-  background-image: url(./asset/hospital_2.png);
-  background-size: cover;
-}
-
-.content2 .row:nth-child(3) {
-  background-image: url(./asset/hospital_3.png);
-  background-size: cover;
-}
-
 @media (max-width: 500px) {
   .content-info p {
     font-size: 0.9rem;

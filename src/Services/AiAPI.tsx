@@ -35,10 +35,14 @@ export const AIQGetAPI = async () => {
   }
 };
 
-export const AIChatPostAPI = async (input: string) => {
+export const AIChatPostAPI = async (
+  input: string,
+  session_id: string | null
+) => {
   try {
     const res = await axios.post<AIChatModel>(api + "/chatbot/", {
       input: input,
+      session_id: session_id,
     });
     return res;
   } catch (error) {

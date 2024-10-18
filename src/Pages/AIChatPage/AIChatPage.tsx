@@ -27,6 +27,7 @@ const AIChatPage = () => {
   const [inputMsg, setInputMsg] = useState<string[]>([
     "vvuioengdaguhbhkuqbino-5437yfb784bi",
   ]);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const [AIMsg, setAIMsg] = useState<string[]>([
     "안녕하세요 무엇을 도와드릴까요?",
   ]);
@@ -38,19 +39,21 @@ const AIChatPage = () => {
   const handleChat = (form: ChatInput) => {
     setInputMsg([...inputMsg, form.input]);
     reset({ input: "" });
-    getChatRes(form.input);
+    getChatRes(form.input, sessionId);
   };
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
     }
   }, [inputMsg, loading]);
-  const getChatRes = async (input: string) => {
+  const getChatRes = async (input: string, session_id: string | null) => {
     setLoading(true);
-    await AIChatPostAPI(input)
+    await AIChatPostAPI(input, session_id)
       .then((res) => {
         if (res) {
           setAIMsg([...AIMsg, res.data.response]);
+          setSessionId(res.data.session_id);
+          console.log(sessionId);
         }
       })
       .catch((e) => {
@@ -58,7 +61,6 @@ const AIChatPage = () => {
       })
       .finally(() => setLoading(false));
   };
-  useEffect(() => {}, []);
   return (
     <>
       <div className={cx("chatHeader")}>

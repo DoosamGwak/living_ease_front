@@ -11,15 +11,22 @@ const Navbar = () => {
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname === "/aimatch" ||
-    location.pathname === "/profile" ||
-    location.pathname === "/profile/edit" ||
+    location.pathname.match("/profile") ||
     location.pathname === "/aichat" ||
     location.pathname === "/"
   )
     return null;
   return (
     <>
-      <div className={cx("navbar")}>
+      <div
+        className={cx("navbar")}
+        style={
+          location.pathname.match("/board/") ||
+          location.pathname.match("/support/")
+            ? { background: "#fafafa" }
+            : {}
+        }
+      >
         <Link to={"/home"}>
           <img src={logoLight} alt="로고" />
         </Link>
