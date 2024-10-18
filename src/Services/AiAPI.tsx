@@ -27,7 +27,7 @@ export const AIQPostAPI = async (user: JSON, pet: JSON) => {
 
 export const AIQGetAPI = async () => {
   try {
-    const res = await axios.get<AIQModel[]>(api + "/pets/questions");
+    const res = await axios.get<AIQModel[]>(api + "/pets/questions/");
     return res;
   } catch (error) {
     console.log(error);
@@ -37,7 +37,7 @@ export const AIQGetAPI = async () => {
 
 export const AIChatPostAPI = async (input: string) => {
   try {
-    const res = await axios.post<AIChatModel>(api + "/chatbot", {
+    const res = await axios.post<AIChatModel>(api + "/chatbot/", {
       input: input,
     });
     return res;
