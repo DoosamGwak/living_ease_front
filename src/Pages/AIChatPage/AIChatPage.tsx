@@ -36,10 +36,10 @@ const AIChatPage = () => {
   const { register, handleSubmit, reset } = useForm<ChatInput>({
     resolver: yupResolver(validation),
   });
-  const handleChat = (form: ChatInput) => {
+  const handleChat = async (form: ChatInput) => {
     setInputMsg([...inputMsg, form.input]);
     reset({ input: "" });
-    getChatRes(form.input, sessionId);
+    await getChatRes(form.input, sessionId);
   };
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -48,6 +48,7 @@ const AIChatPage = () => {
   }, [inputMsg, loading]);
   const getChatRes = async (input: string, session_id: string | null) => {
     setLoading(true);
+    console.log(session_id);
     await AIChatPostAPI(input, session_id)
       .then((res) => {
         if (res) {
