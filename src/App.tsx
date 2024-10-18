@@ -28,8 +28,9 @@ function App() {
               }`
             )}
             style={
-              location.pathname === "/profile" ||
-              location.pathname === "/profile/edit"
+              location.pathname.match("/profile") ||
+              location.pathname.match("/board/") ||
+              location.pathname.match("/support/")
                 ? { background: "#fafafa" }
                 : {}
             }
