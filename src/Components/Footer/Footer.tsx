@@ -13,14 +13,12 @@ const Footer = () => {
   const { isLoggedIn, user } = useAuth();
   const [activeModal, setActiveModal] = useState<boolean>(false);
   const onModal = () => {
-    console.log(activeModal);
     setActiveModal(!activeModal);
   };
   if (
     location.pathname === "/aimatch" ||
     location.pathname === "/" ||
-    location.pathname === "/profile" ||
-    location.pathname === "/profile/edit" ||
+    location.pathname.match("/profile") ||
     location.pathname === "/aichat"
   )
     return null;
@@ -35,7 +33,7 @@ const Footer = () => {
         </Link>
         <Link to="/location">Map</Link>
         {isLoggedIn() ? (
-          <Link to="/profile">{user?.nickname}</Link>
+          <Link to="/profile/detail">{user?.nickname}</Link>
         ) : (
           <Link to="/login">로그인</Link>
         )}

@@ -5,9 +5,8 @@ import { api } from "./ApiURL";
 
 export const AIQPostAPI = async (user: JSON, pet: JSON) => {
   try {
-    console.log(axios.defaults.headers.common["Authorization"]);
     const res = await axios.post<AIRsModel>(
-      api + "/pets/recommands",
+      api + "/pets/recommands/",
       {
         user: user,
         pet: pet,
@@ -18,7 +17,6 @@ export const AIQPostAPI = async (user: JSON, pet: JSON) => {
         },
       }
     );
-    console.log(res);
     return res;
   } catch (error) {
     handleError(error);

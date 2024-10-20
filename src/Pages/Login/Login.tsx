@@ -1,8 +1,6 @@
 import styles from "./Login.module.css";
 import classNames from "classnames/bind";
-import * as Yup from "yup";
 import { useAuth } from "../../Context/useAuth";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { googleCallbackUri, googleClientId } from "../../Services/config.ts";
 const cx = classNames.bind(styles);
@@ -12,11 +10,6 @@ type LoginFormsInputs = {
   password: string;
 };
 
-const validation = Yup.object().shape({
-  email: Yup.string().required("이메일을 입력해주세요."),
-  password: Yup.string().required("패스워드을 입력해주세요."),
-});
-
 const Login = () => {
   const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
   const { loginUser } = useAuth();
@@ -25,7 +18,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFormsInputs>({ resolver: yupResolver(validation) });
+  } = useForm<LoginFormsInputs>();
 
   const onLoginGoogle = () => {
     window.location.href = googleSignInUrl;
@@ -37,7 +30,11 @@ const Login = () => {
     <form onSubmit={handleSubmit(handleLogin)} className={cx("login-form")}>
       <div className={cx("login-div")}>
         <h1>로그인</h1>
-        <input type="email" placeholder="이메일" {...register("email")} />
+        <input
+          type="email"
+          placeholder="이메일"
+          {...register("email", { required: true })}
+        />
         {errors.email ? (
           <p className={cx("password-warning")}>{errors.email.message}</p>
         ) : (
@@ -46,7 +43,7 @@ const Login = () => {
         <input
           type="password"
           placeholder="비밀번호"
-          {...register("password")}
+          {...register("password", { required: true })}
         />
         {errors.password ? (
           <p className={cx("password-warning")}>{errors.password.message}</p>

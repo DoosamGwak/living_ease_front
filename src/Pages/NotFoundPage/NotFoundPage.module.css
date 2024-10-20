@@ -1,0 +1,18 @@
+.pet-family {
+  width: 100%;
+  height: 500px;
+  background: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.pet-family.img1 {
+  background: url(./asset/notFoundDog.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+@media (max-width: 500px) {
+  .pet-family {
+    height: 100vw;
+  }
+}

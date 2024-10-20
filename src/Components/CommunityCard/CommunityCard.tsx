@@ -23,7 +23,7 @@ const CommunityCard = (props: { data: BoardListGet; category: string }) => {
         <p className={cx("content-title")}>{data.title}</p>
       </div>
       <div className={cx("right-content")}>
-        <Link to={""}>
+        <Link to={`/board/${category}/${data.id}`}>
           <img src={moveBtn} alt="이동" />
         </Link>
       </div>

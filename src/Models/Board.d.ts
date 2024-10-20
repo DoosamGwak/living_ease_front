@@ -15,9 +15,7 @@ export interface BoardDetailGet {
 }
 
 export interface BoardPost {
-    "title": string,
-    "content": string,
-    "nickname": string,
+    "id": number
 }
 
 export interface BoardPut {

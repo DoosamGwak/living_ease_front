@@ -48,13 +48,11 @@ const AIChatPage = () => {
   }, [inputMsg, loading]);
   const getChatRes = async (input: string, session_id: string | null) => {
     setLoading(true);
-    console.log(session_id);
     await AIChatPostAPI(input, session_id)
       .then((res) => {
         if (res) {
           setAIMsg([...AIMsg, res.data.response]);
           setSessionId(res.data.session_id);
-          console.log(sessionId);
         }
       })
       .catch((e) => {
@@ -91,7 +89,10 @@ const AIChatPage = () => {
                       className={cx("message-container")}
                       key={`sender${idx}`}
                     >
-                      <div className={cx("message", "user-message")}>
+                      <div
+                        className={cx("message", "user-message")}
+                        key={`sender${idx}Inner`}
+                      >
                         <p>{sender}</p>
                       </div>
                     </div>
@@ -104,14 +105,18 @@ const AIChatPage = () => {
                       src={chatgptIcon}
                       className={cx("profile-image")}
                       alt="ChatGPT Profile"
+                      key={`ai${idx}Img`}
                     />
-                    <div className={cx("message", "bot-message")}>
+                    <div
+                      className={cx("message", "bot-message")}
+                      key={`ai${idx}Msg`}
+                    >
                       {AIMsg[idx] ? (
                         <p>{AIMsg[idx]}</p>
                       ) : loading ? (
                         <img src={chatSpinner} />
                       ) : (
-                        <p>{AIMsg[idx]}</p>
+                        <p>대화를 불러오지 못했습니다.</p>
                       )}
                     </div>
                   </div>

@@ -25,7 +25,7 @@ const ProfilePage = () => {
     const getUserInfo = async () => {
       const userObj = user;
       if (userObj) {
-        const res = await getProfileAPI(userObj?.nickname);
+        const res = await getProfileAPI(userObj?.pk);
         setUserProfile(res?.data);
       }
     };

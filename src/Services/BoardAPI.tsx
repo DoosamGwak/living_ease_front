@@ -27,7 +27,6 @@ export const boardDeleteAPI = async () => {
 export const boardListGetAPI = async (category: string) => {
   try {
     const res = await axios.get<BoardListGet[]>(api + `/boards/${category}/`);
-    console.log(res);
     return res;
   } catch (error) {
     console.log(error);
@@ -38,7 +37,6 @@ export const boardListGetAPI = async (category: string) => {
 export const boardDetailGetAPI = async (pk: number) => {
   try {
     const res = await axios.get<BoardDetailGet>(api + `/boards/${pk}/`);
-    console.log(res);
     return res;
   } catch (error) {
     console.log(error);
@@ -46,11 +44,17 @@ export const boardDetailGetAPI = async (pk: number) => {
   }
 };
 
-export const boardPostAPI = async (title: string, content: string) => {
+export const boardPostAPI = async (
+  title: string,
+  content: string,
+  image: File[] | null,
+  category: string
+) => {
   try {
-    const res = await axios.post<BoardPost>(api + "/boards/", {
+    const res = await axios.post<BoardPost>(api + `/boards${category}/`, {
       title: title,
       content: content,
+      image: image,
     });
     return res;
   } catch (error) {

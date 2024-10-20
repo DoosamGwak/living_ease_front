@@ -37,7 +37,6 @@ export const signupAPI = async (
 
 export const logoutAPI = async (refresh: string) => {
   try {
-    console.log(refresh);
     const res = await axios.post(api + "/accounts/logout/", {
       refresh: refresh,
     });
@@ -47,11 +46,9 @@ export const logoutAPI = async (refresh: string) => {
   }
 };
 
-export const getProfileAPI = async (nickname: string) => {
+export const getProfileAPI = async (pk: number) => {
   try {
-    console.log(nickname);
-    const res = await axios.get(api + `/accounts/${nickname}/`);
-    console.log(res);
+    const res = await axios.get(api + `/accounts/profile/${pk}/`);
     return res;
   } catch (error) {
     handleError(error);
@@ -68,7 +65,7 @@ export const handleGoogleCallback = async ({ request }: any) => {
 
   if (code) {
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:8000/api/v1/auth/google/",
         JSON.stringify({ code }),
         {
@@ -77,8 +74,6 @@ export const handleGoogleCallback = async ({ request }: any) => {
           },
         }
       );
-      console.log(response);
-
       return redirect("/");
     } catch (err) {
       console.error(err);

@@ -1,5 +1,5 @@
 export type UserProfileToken = {
-  pk: number;
+    pk: number;
     email: string;
     nickname: string
     access: string;
@@ -7,6 +7,7 @@ export type UserProfileToken = {
   };
   
 export type UserProfile = {
+    pk: number;
     nickname: string;
     email: string;
   };

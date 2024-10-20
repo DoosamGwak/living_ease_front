@@ -8,12 +8,17 @@
   position: static;
 }
 
+.menu-bar > div {
+  cursor: pointer;
+}
+
 .menu-bar a {
   text-decoration: none;
   color: #2d4921;
   font-size: 18px;
   font-weight: normal;
   position: relative;
+  cursor: pointer;
 }
 
 .menu-bar a.active {

@@ -41,7 +41,6 @@ export const UserProvider = ({ children }: Props) => {
       setAccess(access);
       setAccess(refresh);
       axios.defaults.headers.common["Authorization"] = `Bearer ${access}`;
-      console.log(axios.defaults.headers.common["Authorization"]);
     }
     setIsReady(true);
   }, []);
@@ -57,6 +56,7 @@ export const UserProvider = ({ children }: Props) => {
         if (res) {
           localStorage.setItem("access", res?.data.access);
           const userObj = {
+            pk: res?.data.pk,
             nickname: res?.data.nickname,
             email: res?.data.email,
           };
@@ -67,7 +67,6 @@ export const UserProvider = ({ children }: Props) => {
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
           toast.success("로그인 완료");
-          console.log(axios.defaults.headers.common["Authorization"]);
         }
       })
       .catch((e) => toast.warning("Server error occured", e))
@@ -81,6 +80,7 @@ export const UserProvider = ({ children }: Props) => {
           localStorage.setItem("access", res?.data.access);
           localStorage.setItem("refresh", res?.data.refresh);
           const userObj = {
+            pk: res?.data.pk,
             nickname: res?.data.nickname,
             email: res?.data.email,
           };

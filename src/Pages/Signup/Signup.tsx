@@ -1,8 +1,6 @@
 import styles from "./Signup.module.css";
 import classNames from "classnames/bind";
-import * as Yup from "yup";
 import { useAuth } from "../../Context/useAuth";
-import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 const cx = classNames.bind(styles);
@@ -14,20 +12,13 @@ type SignupFormsInputs = {
   password2: string;
 };
 
-const validation = Yup.object().shape({
-  email: Yup.string().required("이메일을 입력해주세요."),
-  nickname: Yup.string().required("닉네임을 입력해주세요."),
-  password: Yup.string().required("패스워드을 입력해주세요."),
-  password2: Yup.string().required("패스워드을 입력해주세요."),
-});
-
 const Signup = () => {
   const { signupUser } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<SignupFormsInputs>({ resolver: yupResolver(validation) });
+  } = useForm<SignupFormsInputs>();
 
   const handleLogin = (form: SignupFormsInputs) => {
     signupUser(form.email, form.nickname, form.password, form.password2);
@@ -36,13 +27,21 @@ const Signup = () => {
     <form className={cx("login-form")} onSubmit={handleSubmit(handleLogin)}>
       <div className={cx("login-div")}>
         <h1>회원가입</h1>
-        <input type="email" placeholder="이메일" {...register("email")} />
+        <input
+          type="email"
+          placeholder="이메일"
+          {...register("email", { required: true })}
+        />
         {errors.email ? (
           <p className={cx("password-warning")}>{errors.email.message}</p>
         ) : (
           ""
         )}
-        <input type="nickname" placeholder="닉네임" {...register("nickname")} />
+        <input
+          type="nickname"
+          placeholder="닉네임"
+          {...register("nickname", { required: true })}
+        />
         {errors.nickname ? (
           <p className={cx("password-warning")}>{errors.nickname.message}</p>
         ) : (
@@ -51,7 +50,7 @@ const Signup = () => {
         <input
           type="password"
           placeholder="비밀번호"
-          {...register("password")}
+          {...register("password", { required: true })}
         />
         {errors.password ? (
           <p className={cx("password-warning")}>{errors.password.message}</p>
@@ -65,7 +64,7 @@ const Signup = () => {
         <input
           type="password"
           placeholder="비밀번호를 다시 입력해주세요"
-          {...register("password2")}
+          {...register("password2", { required: true })}
         />
         {errors.password2 ? (
           <p className={cx("password-warning")}>{errors.password2.message}</p>

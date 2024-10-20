@@ -20,6 +20,7 @@ import ProfileEditPage from "../Pages/ProfileEditPage/ProfileEditPage";
 import BoardWritePage from "../Pages/BoardWritePage/BoardWritePage";
 import NotYetPage from "../Pages/NotYetPage/NotYetPage";
 import BoardDetailPage from "../Pages/BoardDetailPage/BoardDetailPage";
+import NotFoundPage from "../Pages/NotFoundPage/NotFoundPage";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "signup", element: <Signup /> },
       {
-        path: "profile",
+        path: "profile/detail",
         element: (
           <ProtectedRoute>
             <ProfilePage />
@@ -103,11 +104,13 @@ export const router = createBrowserRouter([
       {
         path: "location",
         element: (
-          <NavermapsProvider
-            ncpClientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID}
-          >
-            <NotYetPage />
-          </NavermapsProvider>
+          <ProtectedRoute>
+            <NavermapsProvider
+              ncpClientId={import.meta.env.VITE_NAVER_MAP_CLIENT_ID}
+            >
+              <NotYetPage />
+            </NavermapsProvider>
+          </ProtectedRoute>
         ),
       },
       {
@@ -132,6 +135,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <AIChatPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <ProtectedRoute>
+            <NotFoundPage />
           </ProtectedRoute>
         ),
       },

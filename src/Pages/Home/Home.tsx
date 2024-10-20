@@ -143,15 +143,17 @@ function Home() {
 
             <div className={cx("sub-content")}>
               <div className={cx("rows")}>
-                <h3>TITLE TITLE</h3>
+                <h3>같이 산책할 사람 있었으면...</h3>
                 <div>
-                  CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
+                  아파트 신책로 걷고 있는데 이제 가을이네.. <br />
+                  같이 산책할 견주분 있었음 좋겠다..
                 </div>
               </div>
               <div className={cx("rows")}>
-                <h3>TITLE TITLE</h3>
+                <h3>이거 병원 가야 하나요?</h3>
                 <div>
-                  CONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENTCONTENT
+                  쓰다듬다 이런걸 발견했는데 초보집사라 잘 모르겠어요ㅠㅠ <br />
+                  병원 가야 하나요?
                 </div>
               </div>
             </div>
