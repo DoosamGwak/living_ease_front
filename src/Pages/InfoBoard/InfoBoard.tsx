@@ -50,7 +50,6 @@ const InfoBoard = () => {
     if (!!categoryName) {
       const getCategoryInit = async () => {
         const res = await boardListGetAPI("info/" + categoryName!);
-        console.log(res?.data);
         setBoards(res?.data);
       };
       getCategoryInit();

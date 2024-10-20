@@ -13,7 +13,6 @@ const SupportCard = (props: { data: BoardListGet }) => {
   const onContent = () => {
     const getDetail = async (id: number) => {
       const res = await boardDetailGetAPI(id);
-      console.log(res?.data);
       setDetail(res?.data);
       setOnActive(!onActive);
     };

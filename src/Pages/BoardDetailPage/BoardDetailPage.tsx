@@ -11,14 +11,12 @@ const cx = classNames.bind(styles);
 const BoardDetailPage = () => {
   const [detail, setDetail] = useState<BoardDetailGet>();
   const { id, category } = useParams<string>();
-  console.log(id);
   const navigate = useNavigate();
   useEffect(() => {
     if (id) {
       const getDetail = async () => {
         const res = await boardDetailGetAPI(parseInt(id, 10));
         setDetail(res?.data);
-        console.log(detail);
       };
       getDetail();
     }
