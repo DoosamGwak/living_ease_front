@@ -42,10 +42,13 @@ const Signup = () => {
           placeholder="닉네임"
           {...register("nickname", { required: true, maxLength: 5 })}
         />
-        {errors.nickname ? (
-          <p className={cx("password-warning")}>{errors.nickname.message}</p>
-        ) : (
-          ""
+        {errors.password && errors.password.type === "required" && (
+          <div className={cx("password-warning")}>※ 닉네임은 필수값입니다.</div>
+        )}
+        {errors.password && errors.password.type === "maxLength" && (
+          <div className={cx("password-warning")}>
+            ※ 닉네임은 최대 5자리까지 가능합니다.
+          </div>
         )}
         <input
           type="password"
