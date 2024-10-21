@@ -115,6 +115,7 @@
   border-start-end-radius: 60px;
   border-start-start-radius: 60px;
   overflow: auto;
+  padding-bottom: 70px;
 }
 
 .pet_detail_recommend > div{
@@ -127,6 +128,52 @@
   border: 4px solid #eeeeee;
   border-radius: 4px;
 }
+
+.shelter-row{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid #eeeeee;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.shelter-row .pet-profile{
+  width: 30%;
+}
+
+.shelter-row .pet-profile img{
+  width: 100%;
+  border-radius: 50vw;
+}
+
+.shelter-row .pet-info{
+  width: 65%;
+}
+
+.shelter-row .pet-info h3{
+  color: #000;
+  margin: 0;
+}
+
+.shelter-row .pet-info p{
+  color: #000;
+  margin: 3px 0;
+}
+
+.shelter-row .pet-info span{
+  border: 1px solid #eee;
+  background: #faf9f9;
+  padding: 5px 8px;
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #000;
+  border-radius: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
 
 @media (max-width: 500px) {
   .section h2 {

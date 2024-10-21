@@ -46,10 +46,49 @@ const AIRecommendPage = () => {
         <div>
           <hr />
           <h2>분양소 정보</h2>
-          <div className={cx("detail_body")}>
-            <div className={cx("detail_row")}>
-              
-            </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
           </div>
         </div>
         
