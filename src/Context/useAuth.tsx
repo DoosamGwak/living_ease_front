@@ -105,6 +105,8 @@ export const UserProvider = ({ children }: Props) => {
   };
 
   const logout = async () => {
+    const refresh_token = localStorage.getItem("refresh");
+    setRefresh(refresh_token);
     refresh &&
       (await logoutAPI(refresh)
         .then((res) => {
@@ -115,6 +117,7 @@ export const UserProvider = ({ children }: Props) => {
             localStorage.removeItem("user");
             setUser(null);
             setAccess(null);
+            setRefresh(null);
           }
         })
         .catch((e) => toast.warning("로그아웃에 실패했습니다.", e))

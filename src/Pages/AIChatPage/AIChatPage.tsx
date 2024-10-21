@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { AIChatPostAPI } from "../../Services/AiAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../Context/useAuth";
 
 const cx = classNames.bind(styles);
 
@@ -26,6 +27,7 @@ const validation = Yup.object().shape({
 const AIChatPage = () => {
   const [activeCategory, setActiveCategory] = useState<boolean>(false);
   const navigate = useNavigate();
+  const { logout } = useAuth();
   const [inputMsg, setInputMsg] = useState<string[]>([
     "vvuioengdaguhbhkuqbino-5437yfb784bi",
   ]);
@@ -46,9 +48,7 @@ const AIChatPage = () => {
   const jsonfy = (texts: string): string => {
     const jsonPattern = /startjson\s*\[(.*?)\]\s*endjson/gs;
     const match = jsonPattern.exec(texts);
-    console.log(match);
     if (match && match[1]) {
-      console.log(match);
       try {
         const recData = JSON.parse(`[${match[1]}]`);
         localStorage.setItem(`aiRec`, JSON.stringify(recData));
@@ -65,7 +65,6 @@ const AIChatPage = () => {
   const urlify = (texts: string): (string | JSX.Element)[] => {
     const urlPattern = /(\(https?:\/\/petmily\.info[\/a-zA-Z0-9#?&/=%.-]*\))/g;
     return texts?.split(urlPattern).map((text, index) => {
-      console.log(text, "##################################");
       if (urlPattern.test(text)) {
         const url = text.replace(
           /\(https:\/\/petmily\.info([\/a-zA-Z0-9#?&/=%.-]*)\)/g,
@@ -85,7 +84,6 @@ const AIChatPage = () => {
           </>
         );
       } else {
-        console.log(text);
         return text;
       }
     });
@@ -135,6 +133,11 @@ const AIChatPage = () => {
           <p>강아지에 한 모든 정보를 담아둔 서비스</p>
           <h3>견종백과</h3>
         </Link>
+        <div className={cx("logout-body")}>
+          <button className={cx("logout-bt")} onClick={() => logout()}>
+            로그아웃
+          </button>
+        </div>
       </div>
       <div
         className={cx("chatCategoryRight", activeCategory ? "active" : null)}

@@ -114,7 +114,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "airecommend",
-        element: <AIRecommend />,
+        element: (
+          <ProtectedRoute>
+            <AIRecommend />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "aichat",

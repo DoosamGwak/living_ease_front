@@ -45,7 +45,6 @@ export const boardDetailGetAPI = async (pk: number) => {
 };
 
 export const boardPostAPI = async (form: FormData, category: string) => {
-  console.log(form);
   try {
     const res = await axios.post<BoardPost>(
       api + `/boards/${category}/`,

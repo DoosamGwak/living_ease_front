@@ -14,11 +14,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getProfileAPI } from "../../Services/AuthAPI";
 import { UserProfileDetail } from "../../Models/User";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [userProfile, setUserProfile] = useState<UserProfileDetail>();
   const navigate = useNavigate();
   useEffect(() => {
@@ -109,6 +110,10 @@ const ProfilePage = () => {
             <img src={moveBtn} alt="" />
           </div>
         </a>
+        <div className={cx("profile-bottom-btn-body")}>
+          <button onClick={() => logout}>로그아웃</button>
+          <button onClick={() => toast("아직 미구현")}>회원탈퇴</button>
+        </div>
       </div>
     </div>
   );

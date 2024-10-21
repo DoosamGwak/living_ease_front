@@ -30,6 +30,20 @@
   cursor: pointer;
 }
 
+.logout-body {
+  text-align: right;
+}
+
+.logout-bt {
+  background: #fff;
+  border: 0;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
 /* 모달(사이드바) */
 .modal {
   position: fixed;
@@ -83,7 +97,10 @@
 }
 
 .message.bot-message button {
-  margin-left: 10px;
+  display: block;
+  width: 60vw;
+  max-width: 300px;
+  margin: 0 auto;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;

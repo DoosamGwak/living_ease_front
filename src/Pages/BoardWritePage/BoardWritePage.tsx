@@ -32,14 +32,11 @@ const BoardWritePage = () => {
     formData.append("category", form.category);
     if (form.image) {
       Array.from(form.image).forEach((file) => {
-        console.log(file);
         formData.append("image", file);
       });
     }
     const res = await boardPostAPI(formData, `community/${form.category}`);
-    console.log(res, res?.data.pk);
     if (res?.status == 201) {
-      console.log(res);
       toast("게시글이 등록되었습니다.");
       navigate(`/board/${form.category}/${res?.data.pk}`);
     } else {
@@ -79,8 +76,6 @@ const BoardWritePage = () => {
         reader.readAsDataURL(file);
       });
     }
-
-    console.log(uploadImage);
     if (uploadImage?.length === 8) {
       setUploadImgModal(false);
     }
