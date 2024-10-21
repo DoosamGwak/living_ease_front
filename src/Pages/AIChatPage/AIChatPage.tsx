@@ -24,6 +24,7 @@ const validation = Yup.object().shape({
 });
 
 const AIChatPage = () => {
+  const [activeCategory, setActiveCategory] = useState<boolean>(false);
   const navigate = useNavigate();
   const [inputMsg, setInputMsg] = useState<string[]>([
     "vvuioengdaguhbhkuqbino-5437yfb784bi",
@@ -63,35 +64,44 @@ const AIChatPage = () => {
   };
   return (
     <>
-      <div className={cx("chatCategory")}>
-      <Link to="/aichat" className={cx("modal-row")}>
-            <p>반려동물 추천 서비스</p>
-            <h3>팻밀리 AI</h3>
-          </Link>
-          <Link to="/location" className={cx("modal-row")}>
-            <p>주변 산책로, 동물병원 추천</p>
-            <h3>위치서비스</h3>
-          </Link>
-          <Link to="/community/walkingmate" className={cx("modal-row")}>
-            <p>반려동물의 친구 찾아줄 서비스</p>
-            <h3>커뮤니티</h3>
-          </Link>
-          <Link to="/info/training" className={cx("modal-row")}>
-            <p>믿을 수 있는 꿀 정보 서비스</p>
-            <h3>정보게시판</h3>
-          </Link>
-          <Link to="/" className={cx("modal-row")}>
-            <p>강아지에 한 모든 정보를 담아둔 서비스</p>
-            <h3>견종백과</h3>
-          </Link>
+      <div
+        className={cx("chatCategory")}
+        style={activeCategory ? {} : { display: "none" }}
+      >
+        <Link to="/aichat" className={cx("modal-row")}>
+          <p>반려동물 추천 서비스</p>
+          <h3>팻밀리 AI</h3>
+        </Link>
+        <Link to="/location" className={cx("modal-row")}>
+          <p>주변 산책로, 동물병원 추천</p>
+          <h3>위치서비스</h3>
+        </Link>
+        <Link to="/community/walkingmate" className={cx("modal-row")}>
+          <p>반려동물의 친구 찾아줄 서비스</p>
+          <h3>커뮤니티</h3>
+        </Link>
+        <Link to="/info/training" className={cx("modal-row")}>
+          <p>믿을 수 있는 꿀 정보 서비스</p>
+          <h3>정보게시판</h3>
+        </Link>
+        <Link to="/" className={cx("modal-row")}>
+          <p>강아지에 한 모든 정보를 담아둔 서비스</p>
+          <h3>견종백과</h3>
+        </Link>
       </div>
-      <div className={cx("chatCategoryRight")}>
+      <div
+        className={cx("chatCategoryRight", activeCategory ? "active" : null)}
+        onClick={() =>
+          activeCategory ? setActiveCategory(!activeCategory) : null
+        }
+      >
         <div className={cx("chatHeader")}>
           <img
             src={menuIcon}
             className={cx("menu-icon")}
             alt="Menu Icon"
             id="menu-button"
+            onClick={() => setActiveCategory(!activeCategory)}
           />
           <h2
             className={cx("logo")}
@@ -122,7 +132,10 @@ const AIChatPage = () => {
                       </div>
                     )}
                     <div
-                      className={cx("message-container", "bot-message-container")}
+                      className={cx(
+                        "message-container",
+                        "bot-message-container"
+                      )}
                       key={`ai${idx}`}
                     >
                       <img

@@ -175,8 +175,7 @@
   background-color: #e0d4e3;
 }
 
-
-.chatCategory{
+.chatCategory {
   background: #000;
   position: absolute;
   height: 100vh;
@@ -187,7 +186,7 @@
   width: calc(80% - 50px);
 }
 
-.chatCategoryRight{
+.chatCategoryRight.active {
   position: absolute;
   right: -43vw;
   position: absolute;
@@ -210,9 +209,8 @@
   margin-top: 4px;
 }
 
-
 @media (max-width: 500px) {
-  .chatCategoryRight{
-    left: 80%
+  .chatCategoryRight.active {
+    left: 80%;
   }
 }
