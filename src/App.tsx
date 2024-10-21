@@ -7,6 +7,7 @@ import AccountNavbar from "./Components/AccountNavbar/AccountNavbar";
 import styles from "./App.module.css";
 import classNames from "classnames/bind";
 import { UserProvider } from "./Context/useAuth";
+import ScrollToTop from "./Helpers/ScollToTop";
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ function App() {
   return (
     <>
       <UserProvider>
+        <ScrollToTop />
         <div className={cx("container")}>
           <div
             className={cx(

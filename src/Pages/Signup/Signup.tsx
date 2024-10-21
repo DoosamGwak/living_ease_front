@@ -30,7 +30,7 @@ const Signup = () => {
         <input
           type="email"
           placeholder="이메일"
-          {...register("email", { required: true })}
+          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
         {errors.email ? (
           <p className={cx("password-warning")}>{errors.email.message}</p>
@@ -40,7 +40,7 @@ const Signup = () => {
         <input
           type="nickname"
           placeholder="닉네임"
-          {...register("nickname", { required: true, pattern: /^\S+@\S+$/i })}
+          {...register("nickname", { required: true, maxLength: 5 })}
         />
         {errors.nickname ? (
           <p className={cx("password-warning")}>{errors.nickname.message}</p>
