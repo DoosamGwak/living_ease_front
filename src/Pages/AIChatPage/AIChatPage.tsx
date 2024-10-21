@@ -56,7 +56,7 @@ const AIChatPage = () => {
           "추천을 받으러 이동하기(https://petmily.info/airecommend)";
         return goToRec;
       } catch (e) {
-        console.error("JSON 파싱 에러:", e);
+        toast("JSON 파싱 에러:");
         return texts;
       }
     }

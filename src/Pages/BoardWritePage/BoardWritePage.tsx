@@ -32,6 +32,7 @@ const BoardWritePage = () => {
     formData.append("category", form.category);
     if (form.image) {
       Array.from(form.image).forEach((file) => {
+        console.log(file);
         formData.append("image", file);
       });
     }
@@ -63,6 +64,7 @@ const BoardWritePage = () => {
       const newFiles = Array.from(files).slice(0, 8);
       setUploadImage((prev) => {
         const updatedFiles = prev ? [...prev, ...newFiles] : newFiles;
+        setValue("image", updatedFiles.slice(0, 8));
         return updatedFiles.slice(0, 8);
       });
       newFiles.map((file) => {
@@ -77,7 +79,8 @@ const BoardWritePage = () => {
         reader.readAsDataURL(file);
       });
     }
-    setValue("image", uploadImage);
+
+    console.log(uploadImage);
     if (uploadImage?.length === 8) {
       setUploadImgModal(false);
     }
@@ -100,14 +103,19 @@ const BoardWritePage = () => {
             <label htmlFor="board-category">카테고리</label>
             <select
               id="board-category"
-              {...register("category", { required: true })}
+              {...register("category", {
+                required: true,
+                pattern: /^[a-zA-Z]*$/,
+              })}
             >
               <option>카테고리를 선택해 주세요.</option>
               <option value="walkingmate">산책 메이트</option>
               <option value="tip">꿀팁</option>
               <option value="etc">자유게시판</option>
             </select>
-            {errors.category && <p>카테고리를 선택해주세요.</p>}
+            {errors.category && errors.category.type === "pattern" && (
+              <p>카테고리를 선택해주세요.</p>
+            )}
           </p>
           <p>
             <label htmlFor="board-title">제목</label>
