@@ -40,7 +40,7 @@ const Signup = () => {
         <input
           type="nickname"
           placeholder="닉네임"
-          {...register("nickname", { required: true })}
+          {...register("nickname", { required: true, pattern: /^\S+@\S+$/i })}
         />
         {errors.nickname ? (
           <p className={cx("password-warning")}>{errors.nickname.message}</p>
@@ -50,14 +50,26 @@ const Signup = () => {
         <input
           type="password"
           placeholder="비밀번호"
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: true,
+            minLength: 8,
+            maxLength: 20,
+          })}
         />
-        {errors.password ? (
-          <p className={cx("password-warning")}>{errors.password.message}</p>
-        ) : (
+        {errors.password && errors.password.type === "required" && (
           <div className={cx("password-warning")}>
             ※ 8자 이상 대문자, 소문자, 숫자, 특수문자 중 3가지 이상을 사용해
             주세요.
+          </div>
+        )}
+        {errors.password && errors.password.type === "minLength" && (
+          <div className={cx("password-warning")}>
+            ※ 8자 이상의 비밀번호를 설정해주세요.
+          </div>
+        )}
+        {errors.password && errors.password.type === "maxLength" && (
+          <div className={cx("password-warning")}>
+            ※ 비밀번호는 최대 20자까지 가능합니다.
           </div>
         )}
 
