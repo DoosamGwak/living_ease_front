@@ -135,6 +135,9 @@ const AIChatPage = () => {
           <p>강아지에 한 모든 정보를 담아둔 서비스</p>
           <h3>견종백과</h3>
         </Link>
+        <div className={cx("logout-body")}>
+          <button className={cx("logout-bt")}>로그아웃</button>
+        </div>
       </div>
       <div
         className={cx("chatCategoryRight", activeCategory ? "active" : null)}

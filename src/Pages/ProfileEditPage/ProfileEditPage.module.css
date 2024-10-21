@@ -120,6 +120,19 @@
   margin-left: 6%;
 }
 
+.profile-body button{
+  display: block;
+  padding: 10px 0;
+  font-size: 1em;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 20px;
+  margin-top: 100px;
+  width: 90%;
+  min-width: 260px;
+  cursor: pointer;
+}
+
 .profile-bottom p,
 .profile-bottom p button {
   font-size: 0.8em;

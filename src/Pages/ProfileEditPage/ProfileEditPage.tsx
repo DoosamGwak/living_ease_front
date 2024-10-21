@@ -137,6 +137,7 @@ const ProfileEditPage = () => {
           </div>
           <input type="submit" style={{ display: "none" }} />
         </div>
+        <button>수정하기</button>
       </form>
       <div className={cx("profile-bottom")}>
         <p>

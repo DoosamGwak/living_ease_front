@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./AIRecommend.module.css";
-import moveIcon from "./asset/003.png";
-import dog from "./asset/goldenRetriver.jpg";
+import moveIcon from "./asset/right_icon.png";
+import dog from "./asset/sichu.png";
 import { useEffect, useState } from "react";
 import { AIRModel } from "../../Models/AIQ";
 import { useNavigate } from "react-router-dom";
@@ -32,19 +32,66 @@ const AIRecommendPage = () => {
       <div className={cx("pet_infos")}>
         <div className={cx("pet_line")}>
           <div className={cx("pet_info")}>
-            <span className={cx("pet_info", "title")}>성격</span>
-            <hr />
-            <div></div>
             {recommend1?.personality}
           </div>
           <div className={cx("pet_info")}>
-            <span className={cx("pet_info", "title")}>추천하는 이유</span>
             {recommend1?.why}
           </div>
           <button className={cx("pet_btn")} type="button">
             분양소 정보 보기
           </button>
         </div>
+      </div>
+      <div className={cx("pet_detail_recommend")}>
+        <div>
+          <hr />
+          <h2>분양소 정보</h2>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+          <div className={cx("shelter-row")}>
+              <div className={cx("pet-profile")}>
+                  <img src={dog} alt="강아지 프로필" />
+              </div>
+              <div className={cx("pet-info")}>
+                  <h3>골든 리트리버</h3>
+                  <p>양평군 유기동물보호소</p>
+                  <span>나이: 2019(년생)</span>
+                  <span>성별:여</span>
+              </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   );

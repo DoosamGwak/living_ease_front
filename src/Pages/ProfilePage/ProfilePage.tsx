@@ -109,6 +109,10 @@ const ProfilePage = () => {
             <img src={moveBtn} alt="" />
           </div>
         </a>
+        <div className={cx("profile-bottom-btn-body")}>
+          <button>로그아웃</button>
+          <button>회원탈퇴</button>
+        </div>
       </div>
     </div>
   );
