@@ -93,11 +93,12 @@ export const UserProvider = ({ children }: Props) => {
           toast.success("로그인 완료");
         } else if (res?.status == 400) {
           toast.success("등록되지 않은 회원입니다.");
-          navigate("/login");
         }
       })
       .catch((e) => toast.warning("Server error occured", e))
-      .finally(() => navigate("/"));
+      .finally(() =>
+        user && access && refresh ? navigate("/") : navigate("/login")
+      );
   };
 
   const isLoggedIn = () => {
