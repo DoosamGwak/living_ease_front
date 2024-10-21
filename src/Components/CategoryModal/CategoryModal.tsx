@@ -32,7 +32,7 @@ const CategoryModal = (props: CategoryModalProp) => {
             <p>믿을 수 있는 꿀 정보 서비스</p>
             <h3>정보게시판</h3>
           </Link>
-          <Link to="/" className={cx("modal-row")}>
+          <Link to="/location" className={cx("modal-row")}>
             <p>강아지에 한 모든 정보를 담아둔 서비스</p>
             <h3>견종백과</h3>
           </Link>

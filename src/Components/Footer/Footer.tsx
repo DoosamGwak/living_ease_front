@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/useAuth";
 import AIIcon from "./asset/AI_icon.png";
 import CategoryModal from "../CategoryModal/CategoryModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +15,9 @@ const Footer = () => {
   const onModal = () => {
     setActiveModal(!activeModal);
   };
+  useEffect(() => {
+    setActiveModal(false);
+  }, [location.pathname]);
   if (
     location.pathname === "/aimatch" ||
     location.pathname === "/" ||

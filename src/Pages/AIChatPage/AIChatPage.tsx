@@ -43,6 +43,53 @@ const AIChatPage = () => {
     reset({ input: "" });
     await getChatRes(form.input, sessionId);
   };
+  const jsonfy = (texts: string): string => {
+    const jsonPattern = /startjson\s*\[(.*?)\]\s*endjson/gs;
+    const match = jsonPattern.exec(texts);
+    console.log(match);
+    if (match && match[1]) {
+      console.log(match);
+      try {
+        const recData = JSON.parse(`[${match[1]}]`);
+        localStorage.setItem(`aiRec`, JSON.stringify(recData));
+        const goToRec =
+          "추천을 받으러 이동하기(https://petmily.info/airecommend)";
+        return goToRec;
+      } catch (e) {
+        console.error("JSON 파싱 에러:", e);
+        return texts;
+      }
+    }
+    return texts;
+  };
+  const urlify = (texts: string): (string | JSX.Element)[] => {
+    const urlPattern = /(\(https?:\/\/petmily\.info[\/a-zA-Z0-9#?&/=%.-]*\))/g;
+    return texts?.split(urlPattern).map((text, index) => {
+      console.log(text, "##################################");
+      if (urlPattern.test(text)) {
+        const url = text.replace(
+          /\(https:\/\/petmily\.info([\/a-zA-Z0-9#?&/=%.-]*)\)/g,
+          "$1"
+        );
+        return (
+          <>
+            <br />
+            <br />
+            <button>
+              <Link to={url} key={index}>
+                이동
+              </Link>
+            </button>
+            <br />
+            <br />
+          </>
+        );
+      } else {
+        console.log(text);
+        return text;
+      }
+    });
+  };
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
@@ -149,11 +196,11 @@ const AIChatPage = () => {
                         key={`ai${idx}Msg`}
                       >
                         {AIMsg[idx] ? (
-                          <p>{AIMsg[idx]}</p>
+                          <p>{urlify(jsonfy(AIMsg[idx]))}</p>
                         ) : loading ? (
                           <img src={chatSpinner} />
                         ) : (
-                          <p>{AIMsg[idx]}</p>
+                          <p>{urlify(jsonfy(AIMsg[idx]))}</p>
                         )}
                       </div>
                     </div>

@@ -1,14 +1,27 @@
 import classNames from "classnames/bind";
 import styles from "./AIRecommend.module.css";
-import { useAIRec } from "../../Context/useAI";
 import moveIcon from "./asset/003.png";
 import dog from "./asset/goldenRetriver.jpg";
+import { useEffect, useState } from "react";
+import { AIRModel } from "../../Models/AIQ";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 const AIRecommendPage = () => {
-  const { recommend1 } = useAIRec();
-
+  const [recommend1, setRecommend1] = useState<AIRModel>();
+  // const [recommend2, setRecommend2] = useState<AIRModel>();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const recommends = localStorage.getItem("aiRec");
+    if (recommends) {
+      const recArr = JSON.parse(recommends);
+      setRecommend1(recArr[0]);
+      // setRecommend2(recArr[1]);
+    } else {
+      navigate("/aichat");
+    }
+  }, []);
   return (
     <div className={cx("content")}>
       <div className={cx("section")}>

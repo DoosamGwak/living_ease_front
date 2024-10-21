@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { boardPostAPI } from "../../Services/BoardAPI";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -31,8 +32,14 @@ const BoardWritePage = () => {
       form.image,
       `/community/${form.category}`
     );
-    console.log(res, res?.data.id);
-    // navigate(`/board/${form.category}/${res?.data.id}`);
+    console.log(res, res?.data.pk);
+    if (res?.status == 201) {
+      console.log(res.data);
+      toast("게시글이 등록되었습니다.");
+      navigate(`/board/${form.category}/${res?.data.pk}`);
+    } else {
+      toast("게시글 등록에 실패하였습니다.");
+    }
   };
 
   const [previewUrl, setPreviewUrl] = useState<string[] | null>(null);

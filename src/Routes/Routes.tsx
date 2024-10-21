@@ -114,21 +114,8 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        element: (
-          <ProtectedRoute>
-            <AIMnR />
-          </ProtectedRoute>
-        ),
-        children: [
-          // {
-          //   path: "aimatch",
-          //   element: <AIMatch />,
-          // },
-          {
-            path: "airecommend",
-            element: <AIRecommend />,
-          },
-        ],
+        path: "airecommend",
+        element: <AIRecommend />,
       },
       {
         path: "aichat",

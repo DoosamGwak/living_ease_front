@@ -15,7 +15,7 @@ export interface BoardDetailGet {
 }
 
 export interface BoardPost {
-    "id": number
+    "pk": number
 }
 
 export interface BoardPut {
