@@ -82,6 +82,9 @@
   background-image: url("./src/asset/chatBackground.png");
   background-size: cover;
   background-position: center;
+  position: relative;
+  clip-path: inset(0 0 0 0);
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1000px) {
