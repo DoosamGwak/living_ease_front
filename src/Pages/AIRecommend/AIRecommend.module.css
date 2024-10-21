@@ -11,6 +11,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  background-image: url(./src/asset/chatBackground.png);
+  background-size: cover;
+  background-position: center;
 }
 
 .section {
@@ -23,8 +26,8 @@
   font-size: 25px;
   font-weight: bold;
   margin-bottom: 10px;
-  text-align: left;
-  color: #fff;
+  color: #273316;
+  text-align: center;
 }
 
 .section p {
@@ -46,24 +49,20 @@
 
 .move_btn {
   position: absolute;
-  width: 10vw;
+  width: 45px;
   top: 50%;
   right: 1vw;
+  cursor: pointer;
 }
 
 .pet_infos {
-  width: calc(100% - 20px);
-  background-color: #273316;
-  color: #fff;
-  padding: 36px 10px;
-  margin-bottom: 70px;
   text-align: center;
-}
-
-.pet_line {
-  border: 1px solid #fff;
-  border-radius: 16px;
-  padding: 15px 46px 30px;
+  width: 80%;
+  padding: 20px 10px;
+  margin: 25px auto;
+  font-size: 20px;
+  word-break: break-word;
+  color: #000;
 }
 
 .pet_infos p {
@@ -71,6 +70,7 @@
   font-weight: bold;
   margin: 0;
   font-size: 20px;
+  text-align: center;
 }
 
 .pet_infos h3 {
@@ -79,12 +79,13 @@
 }
 
 .pet_info {
-  text-align: left;
+  text-align: center;
   width: calc(100% - 20px);
   padding: 20px 10px;
   margin-bottom: 25px;
   font-size: 20px;
   word-break: break-word;
+  font-weight: bold;
 }
 
 .pet_info.title {
@@ -92,12 +93,39 @@
 }
 
 .pet_btn {
-  border-radius: 20px;
+  border-radius: 30px;
   text-decoration: underline;
-  background: none;
-  border: 1px solid #fff;
+  background: #000;
+  border: 0;
   color: #fff;
-  padding: 8px 62px;
+  padding: 15px 0;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pet_detail_recommend{
+  position: fixed;
+  height: 60vh;
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  bottom: 0;
+  border-start-end-radius: 60px;
+  border-start-start-radius: 60px;
+  overflow: auto;
+}
+
+.pet_detail_recommend > div{
+  padding: 10px 25px;
+}
+
+.pet_detail_recommend hr{
+  width: 30%;
+  margin: 0 auto 20px;
+  border: 4px solid #eeeeee;
+  border-radius: 4px;
 }
 
 @media (max-width: 500px) {
