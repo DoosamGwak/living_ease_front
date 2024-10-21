@@ -153,7 +153,7 @@ const AIChatPage = () => {
                         ) : loading ? (
                           <img src={chatSpinner} />
                         ) : (
-                          <p>대화를 불러오지 못했습니다.</p>
+                          <p>{AIMsg[idx]}</p>
                         )}
                       </div>
                     </div>
