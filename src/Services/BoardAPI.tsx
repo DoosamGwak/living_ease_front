@@ -2,7 +2,6 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { api } from "./ApiURL";
 import { BoardDetailGet, BoardListGet, BoardPost } from "../Models/Board";
-import { BoardFormInputs } from "../Pages/BoardWritePage/BoardWritePage";
 
 export const boardPutAPI = async (title: string, content: string) => {
   try {
