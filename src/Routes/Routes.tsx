@@ -5,7 +5,6 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 // import AIMatch from "../Pages/AIMatch/AIMatch";
 import AIRecommend from "../Pages/AIRecommend/AIRecommend";
-import AIMnR from "../Pages/AIMnR/AIMnR";
 import InfoBoard from "../Pages/InfoBoard/InfoBoard";
 import ProtectedRoute from "./ProtectedRoute";
 // import LocationPage from "../Pages/LocationPage/LocationPage";
