@@ -32,20 +32,23 @@ const Signup = () => {
           placeholder="이메일"
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email ? (
-          <p className={cx("password-warning")}>{errors.email.message}</p>
-        ) : (
-          ""
+        {errors.email && errors.email.type === "required" && (
+          <div className={cx("password-warning")}>※ 이메일은 필수값입니다.</div>
+        )}
+        {errors.email && errors.email.type === "pattern" && (
+          <div className={cx("password-warning")}>
+            ※ 유효하지 않은 이메일입니다.
+          </div>
         )}
         <input
           type="nickname"
           placeholder="닉네임"
           {...register("nickname", { required: true, maxLength: 5 })}
         />
-        {errors.password && errors.password.type === "required" && (
+        {errors.nickname && errors.nickname.type === "required" && (
           <div className={cx("password-warning")}>※ 닉네임은 필수값입니다.</div>
         )}
-        {errors.password && errors.password.type === "maxLength" && (
+        {errors.nickname && errors.nickname.type === "maxLength" && (
           <div className={cx("password-warning")}>
             ※ 닉네임은 최대 5자리까지 가능합니다.
           </div>
