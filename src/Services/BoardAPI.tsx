@@ -2,6 +2,7 @@ import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
 import { api } from "./ApiURL";
 import { BoardDetailGet, BoardListGet, BoardPost } from "../Models/Board";
+import { BoardFormInputs } from "../Pages/BoardWritePage/BoardWritePage";
 
 export const boardPutAPI = async (title: string, content: string) => {
   try {
@@ -44,18 +45,18 @@ export const boardDetailGetAPI = async (pk: number) => {
   }
 };
 
-export const boardPostAPI = async (
-  title: string,
-  content: string,
-  image: File[] | null,
-  category: string
-) => {
+export const boardPostAPI = async (form: FormData, category: string) => {
+  console.log(form);
   try {
-    const res = await axios.post<BoardPost>(api + `/boards${category}/`, {
-      title: title,
-      content: content,
-      image: image,
-    });
+    const res = await axios.post<BoardPost>(
+      api + `/boards/${category}/`,
+      form,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
     return res;
   } catch (error) {
     handleError(error);

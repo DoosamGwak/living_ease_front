@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
-type BoardFormInputs = {
+export type BoardFormInputs = {
   category: string;
   title: string;
   content: string;
@@ -26,15 +26,19 @@ const BoardWritePage = () => {
     formState: { errors },
   } = useForm<BoardFormInputs>();
   const handleBoard = async (form: BoardFormInputs) => {
-    const res = await boardPostAPI(
-      form.title,
-      form.content,
-      form.image,
-      `/community/${form.category}`
-    );
+    const formData = new FormData();
+    formData.append("title", form.title);
+    formData.append("content", form.content);
+    formData.append("category", form.category);
+    if (form.image) {
+      Array.from(form.image).forEach((file) => {
+        formData.append("image", file);
+      });
+    }
+    const res = await boardPostAPI(formData, `community/${form.category}`);
     console.log(res, res?.data.pk);
     if (res?.status == 201) {
-      console.log(res.data);
+      console.log(res);
       toast("게시글이 등록되었습니다.");
       navigate(`/board/${form.category}/${res?.data.pk}`);
     } else {
