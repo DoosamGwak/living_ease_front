@@ -16,7 +16,10 @@ const CommunityCard = (props: { data: BoardListGet; category: string }) => {
   return (
     <div className={cx("row")}>
       <div className={cx("left-content")}>
-        <img src={profile} alt="사진" />
+        <img
+          src={data.profile_image ? data.profile_image : profile}
+          alt="사진"
+        />
       </div>
       <div className={cx("center-content")}>
         <p className={cx("content-category")}>{category}</p>

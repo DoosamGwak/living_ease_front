@@ -11,9 +11,20 @@
   color: #000;
 }
 .content-top {
+  position: relative;
   font-size: 15pt;
   color: #000;
   font-weight: bold;
+}
+
+.content-top .delete {
+  position: absolute;
+  right: 20px;
+}
+
+.content-top .edit {
+  position: absolute;
+  right: 70px;
 }
 
 .content-top span {

@@ -23,6 +23,11 @@
   padding-top: 40px;
 }
 
+.wrapper.intro {
+  background: url("./asset/introBackground.png");
+  background-size: cover;
+}
+
 .account_wrap {
   width: 100%;
   background-color: transparent;

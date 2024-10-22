@@ -4,6 +4,7 @@ export interface BoardListGet {
     "nickname": string,
     "content_snippet": string,
     "created_at": string,
+    "profile_image": string
 }
 
 export interface BoardDetailGet {

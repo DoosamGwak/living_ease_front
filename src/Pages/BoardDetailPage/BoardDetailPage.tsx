@@ -31,6 +31,8 @@ const BoardDetailPage = () => {
           <img src={moveBtn} alt="" />
         </span>
         {category}
+        <button className={cx("edit")}>수정</button>
+        <button className={cx("delete")}>삭제</button>
       </div>
       <div className={cx("content-info")}>
         <h2>{detail?.title}</h2>

@@ -165,6 +165,7 @@
 
 .bot-message {
   background-color: #f0e5f3;
+  white-space: pre-wrap;
 }
 
 .profile-image {

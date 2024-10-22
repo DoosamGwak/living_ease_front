@@ -33,7 +33,7 @@ const AIChatPage = () => {
   ]);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [AIMsg, setAIMsg] = useState<string[]>([
-    "팻밀리 서비스를 이용해 주셔서 감사합니다. 저희 Petmily AI는 다양한 서비스를 제공합니다.",
+    "팻밀리 서비스를 이용해 주셔서 감사합니다. 저희 Petmily AI는 다양한 서비스를 제공합니다.\n-견종을 추천해드립니다.\n-다른 서비스로 이동시켜드립니다.",
   ]);
   const [loading, setLoading] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);

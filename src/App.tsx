@@ -20,14 +20,12 @@ function App() {
         <div className={cx("container")}>
           <div
             className={cx(
-              `${
-                location.pathname === "/login" ||
-                location.pathname === "/signup"
-                  ? "account_wrap"
-                  : location.pathname === "/aichat"
-                  ? "aichatWrap"
-                  : "wrapper"
-              }`
+              location.pathname === "/login" || location.pathname === "/signup"
+                ? "account_wrap"
+                : location.pathname === "/aichat"
+                ? "aichatWrap"
+                : "wrapper",
+              location.pathname === "/" && "intro"
             )}
             style={
               location.pathname.match("/profile") ||
