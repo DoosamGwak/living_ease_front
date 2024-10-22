@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import styles from "./BoardDetailPage.module.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { boardDetailGetAPI } from "../../Services/BoardAPI";
 import { BoardDetailGet } from "../../Models/Board";
@@ -12,6 +12,9 @@ const BoardDetailPage = () => {
   const [detail, setDetail] = useState<BoardDetailGet>();
   const { id, category } = useParams<string>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const date = location.state.date;
+
   useEffect(() => {
     if (id) {
       const getDetail = async () => {
@@ -31,9 +34,14 @@ const BoardDetailPage = () => {
       </div>
       <div className={cx("content-info")}>
         <h2>{detail?.title}</h2>
-        <p>2024.10.11</p>
+        <p>{date}</p>
       </div>
-      <div className={cx("content-bottom")}>{detail?.content}</div>
+      <div className={cx("content-bottom")}>
+        {detail &&
+          detail.images.map((image: any) => <img src={image.image} alt="" />)}
+        <br />
+        {detail?.content}
+      </div>
     </div>
   );
 };

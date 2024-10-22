@@ -123,7 +123,7 @@ const BoardWritePage = () => {
             {errors.title && <p>제목을 입력해주세요.</p>}
           </p>
           <p>
-            <label htmlFor="board-content">제목</label>
+            <label htmlFor="board-content">내용</label>
             <textarea
               id="board-content"
               placeholder="내용을 입력해 주세요."

@@ -21,8 +21,8 @@ export const AIRProvider = ({ children }: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const aiRec1 = localStorage.getItem("aiRec1");
-    const aiRec2 = localStorage.getItem("aiRec2");
+    const aiRec1 = sessionStorage.getItem("aiRec1");
+    const aiRec2 = sessionStorage.getItem("aiRec2");
     if (aiRec1 && aiRec2) {
       setRecommend1(JSON.parse(aiRec1));
       setRecommend2(JSON.parse(aiRec2));
@@ -34,11 +34,11 @@ export const AIRProvider = ({ children }: Props) => {
     await AIQPostAPI(user, pet)
       .then((res) => {
         if (res) {
-          localStorage.setItem(
+          sessionStorage.setItem(
             `aiRec1`,
             JSON.stringify(res?.data.recommendations[0])
           );
-          localStorage.setItem(
+          sessionStorage.setItem(
             `aiRec2`,
             JSON.stringify(res?.data.recommendations[1])
           );

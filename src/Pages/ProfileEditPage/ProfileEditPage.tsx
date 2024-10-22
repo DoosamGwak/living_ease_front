@@ -2,12 +2,11 @@ import styles from "./ProfileEditPage.module.css";
 import classNames from "classnames/bind";
 import moveBtn from "./asset/move_bt.png";
 import profileImgBtn from "./asset/profile_img_bt.png";
-import info1 from "./asset/info_001.png";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../Context/useAuth";
-import { getProfileAPI } from "../../Services/AuthAPI";
+import { getProfileAPI, updateProfileAPI } from "../../Services/AuthAPI";
 import { UserProfileDetail } from "../../Models/User";
 
 const cx = classNames.bind(styles);
@@ -16,11 +15,12 @@ type ProfileEditInput = {
   profile_image: File | null;
   nickname: string;
   age: number | null;
-  gender: string | null;
+  gender: string;
 };
 
 const ProfileEditPage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [userProfile, setUserProfile] = useState<UserProfileDetail>();
   useEffect(() => {
     const getUserInfo = async () => {
@@ -28,6 +28,7 @@ const ProfileEditPage = () => {
       if (userObj) {
         const res = await getProfileAPI(userObj?.pk);
         setUserProfile(res?.data);
+        setImgSrc(res?.data.profile_image);
       }
     };
     getUserInfo();
@@ -35,9 +36,46 @@ const ProfileEditPage = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<ProfileEditInput>();
-  const handleProfileSubmit = () => {};
+
+  const clickFileSeletor = () => {
+    const fileSelector = document.getElementById("profile_image");
+    if (fileSelector) {
+      fileSelector.click();
+    }
+  };
+
+  const [imgSrc, setImgSrc] = useState<any>(null);
+  const onUpload = (e: any) => {
+    const file = e.target.files[0];
+    setValue("profile_image", file);
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise<void>((resolve) => {
+      reader.onload = () => {
+        setImgSrc(reader.result || null);
+        resolve();
+        console.log(imgSrc);
+      };
+    });
+  };
+
+  const handleProfileSubmit = async (form: ProfileEditInput) => {
+    const userObj = user;
+    const formData = new FormData();
+    userObj && formData.append("email", userObj.email);
+    formData.append("nickname", form.nickname);
+    form.age && formData.append("age", form.age.toString());
+    formData.append("gender", form.gender);
+    form.profile_image && formData.append("profile_image", form.profile_image);
+    console.log(formData);
+    if (userObj) {
+      await updateProfileAPI(userObj?.pk, formData);
+      navigate("/profile/detail");
+    }
+  };
   return (
     <div className={cx("content")}>
       <div className={cx("content-top")}>
@@ -51,8 +89,8 @@ const ProfileEditPage = () => {
         onSubmit={handleSubmit(handleProfileSubmit)}
       >
         <div className={cx("profile-img")}>
-          <img src={info1} alt="프로필 사진" className={cx("profile_img")} />
-          <label htmlFor="profile_image">
+          <img src={imgSrc} alt="프로필 사진" className={cx("profile_img")} />
+          <label htmlFor="profile_image" onClick={() => clickFileSeletor}>
             <img
               src={profileImgBtn}
               alt="프로필 사진 수정 버튼"
@@ -61,8 +99,10 @@ const ProfileEditPage = () => {
           </label>
           <input
             type="file"
+            id="profile_image"
             className={cx("profile_image")}
             {...register("profile_image")}
+            onChange={onUpload}
           />
         </div>
         <div className={cx("data-body")}>
@@ -89,12 +129,10 @@ const ProfileEditPage = () => {
               defaultValue={userProfile?.nickname}
               {...register("nickname", { required: true })}
             />
-            {errors.nickname ? (
+            {errors.nickname && errors.nickname.type === "required" && (
               <p className={cx("password-warning")}>
-                {errors.nickname.message}
+                닉네임은 필수로 입력해주세요
               </p>
-            ) : (
-              ""
             )}
           </div>
           <div className={cx("rows")}>
@@ -117,7 +155,7 @@ const ProfileEditPage = () => {
               <input
                 type="number"
                 id="age"
-                defaultValue={`${userProfile?.age}`}
+                defaultValue={userProfile?.age?.toString()}
                 min="1"
                 max="100"
                 {...register("age")}

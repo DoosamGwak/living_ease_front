@@ -15,7 +15,7 @@ export type UserProfile = {
   export type UserProfileDetail = {
     nickname: string;
     email: string;
-    profile_image: null;
+    profile_image: string;
     age: number | null;
     gender: string | null;
     joined_at: string;

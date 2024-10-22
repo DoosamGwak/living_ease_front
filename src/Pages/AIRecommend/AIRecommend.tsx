@@ -13,7 +13,7 @@ const AIRecommendPage = () => {
   // const [recommend2, setRecommend2] = useState<AIRModel>();
   const navigate = useNavigate();
   useEffect(() => {
-    const recommends = localStorage.getItem("aiRec");
+    const recommends = sessionStorage.getItem("aiRec");
     if (recommends) {
       const recArr = JSON.parse(recommends);
       setRecommend1(recArr[0]);

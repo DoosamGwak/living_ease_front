@@ -2,6 +2,7 @@ import styles from "./Signup.module.css";
 import classNames from "classnames/bind";
 import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -98,7 +99,11 @@ const Signup = () => {
         <span>또는</span>
       </div>
 
-      <button className={cx("google-btn")} type="button">
+      <button
+        className={cx("google-btn")}
+        type="button"
+        onClick={() => toast("구글 로그인은 준비 예정입니다.")}
+      >
         구글 계정으로 회원 가입하기
       </button>
     </form>

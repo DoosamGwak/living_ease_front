@@ -39,3 +39,12 @@
   color: #b0b0b0;
   margin: 0 0 30px;
 }
+.content-bottom {
+  white-space: pre-wrap;
+}
+
+.content-bottom img {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}

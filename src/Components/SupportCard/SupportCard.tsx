@@ -3,6 +3,7 @@ import styles from "./SupportCard.module.css";
 import { BoardDetailGet, BoardListGet } from "../../Models/Board";
 import { useState } from "react";
 import { boardDetailGetAPI } from "../../Services/BoardAPI";
+import moment from "moment";
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +19,8 @@ const SupportCard = (props: { data: BoardListGet }) => {
     };
     getDetail(data.id);
   };
+  const startDate = new Date(data.created_at);
+  const formatDate = moment(startDate).format("lll");
   return (
     <div className={cx("row")}>
       <h2>
@@ -27,7 +30,7 @@ const SupportCard = (props: { data: BoardListGet }) => {
           onClick={onContent}
         ></button>
       </h2>
-      <p className={cx("date")}>2024.10.07 16:16</p>
+      <p className={cx("date")}>{formatDate}</p>
       {onActive && detail ? (
         <p className={cx("board-content")}>{detail.content}</p>
       ) : null}

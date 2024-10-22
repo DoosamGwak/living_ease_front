@@ -2,7 +2,8 @@ import styles from "./Login.module.css";
 import classNames from "classnames/bind";
 import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
-import { googleCallbackUri, googleClientId } from "../../Services/config.ts";
+// import { googleCallbackUri, googleClientId } from "../../Services/config.ts";
+import { toast } from "react-toastify";
 const cx = classNames.bind(styles);
 
 type LoginFormsInputs = {
@@ -11,7 +12,7 @@ type LoginFormsInputs = {
 };
 
 const Login = () => {
-  const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
+  // const googleSignInUrl = `https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${googleCallbackUri}&prompt=consent&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile&access_type=offline`;
   const { loginUser } = useAuth();
 
   const {
@@ -20,9 +21,10 @@ const Login = () => {
     formState: { errors },
   } = useForm<LoginFormsInputs>();
 
-  const onLoginGoogle = () => {
-    window.location.href = googleSignInUrl;
-  };
+  // const onLoginGoogle = () => {
+  //   window.location.href = googleSignInUrl;
+  // };
+
   const handleLogin = (form: LoginFormsInputs) => {
     loginUser(form.email, form.password);
   };
@@ -65,7 +67,7 @@ const Login = () => {
         <button
           className={cx("google-btn")}
           type="button"
-          onClick={onLoginGoogle}
+          onClick={() => toast("구글 로그인은 준비 예정입니다.")}
         >
           구글 계정으로 로그인하기
         </button>

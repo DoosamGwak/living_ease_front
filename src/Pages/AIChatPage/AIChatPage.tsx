@@ -33,7 +33,7 @@ const AIChatPage = () => {
   ]);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [AIMsg, setAIMsg] = useState<string[]>([
-    "안녕하세요 무엇을 도와드릴까요?",
+    "팻밀리 서비스를 이용해 주셔서 감사합니다. 저희 Petmily AI는 다양한 서비스를 제공합니다.",
   ]);
   const [loading, setLoading] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ const AIChatPage = () => {
     if (match && match[1]) {
       try {
         const recData = JSON.parse(`[${match[1]}]`);
-        localStorage.setItem(`aiRec`, JSON.stringify(recData));
+        sessionStorage.setItem(`aiRec`, JSON.stringify(recData));
         const goToRec =
           "추천을 받으러 이동하기(https://petmily.info/airecommend)";
         return goToRec;

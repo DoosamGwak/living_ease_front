@@ -33,9 +33,9 @@ export const UserProvider = ({ children }: Props) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    const access = localStorage.getItem("access");
-    const refresh = localStorage.getItem("refresh");
+    const user = sessionStorage.getItem("user");
+    const access = sessionStorage.getItem("access");
+    const refresh = sessionStorage.getItem("refresh");
     if (user && access && refresh) {
       setUser(JSON.parse(user));
       setAccess(access);
@@ -54,37 +54,42 @@ export const UserProvider = ({ children }: Props) => {
     await signupAPI(email, nickname, password, password2)
       .then((res) => {
         if (res) {
-          localStorage.setItem("access", res?.data.access);
           const userObj = {
             pk: res?.data.pk,
             nickname: res?.data.nickname,
             email: res?.data.email,
           };
+
           axios.defaults.headers.common["Authorization"] = `Bearer ${res?.data
             .access!}`;
-          localStorage.setItem("user", JSON.stringify(userObj));
+          sessionStorage.setItem("user", JSON.stringify(userObj));
+          sessionStorage.setItem("access", res?.data.access);
+          sessionStorage.setItem("refresh", res?.data.refresh);
           setAccess(res?.data.access!);
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
           toast.success("로그인 완료");
         }
       })
-      .catch((e) => toast.warning("Server error occured", e))
-      .finally(() => navigate("/"));
+      .then(() => navigate("/"))
+      .catch((e) => {
+        toast.warning("Server error occured", e);
+        navigate("/signup");
+      });
   };
 
   const loginUser = async (email: string, password: string) => {
     await loginAPI(email, password)
       .then((res) => {
         if (res && res?.status == 200) {
-          localStorage.setItem("access", res?.data.access);
-          localStorage.setItem("refresh", res?.data.refresh);
+          sessionStorage.setItem("access", res?.data.access);
+          sessionStorage.setItem("refresh", res?.data.refresh);
           const userObj = {
             pk: res?.data.pk,
             nickname: res?.data.nickname,
             email: res?.data.email,
           };
-          localStorage.setItem("user", JSON.stringify(userObj));
+          sessionStorage.setItem("user", JSON.stringify(userObj));
           axios.defaults.headers.common["Authorization"] = `Bearer ${res?.data
             .access!}`;
           setAccess(res?.data.access!);
@@ -93,11 +98,14 @@ export const UserProvider = ({ children }: Props) => {
           toast.success("로그인 완료");
           navigate("/");
         } else {
-          toast.success("등록되지 않은 회원입니다.");
+          toast.success("로그인에 실패하셨습니다.");
           navigate("/login");
         }
       })
-      .catch((e) => toast.warning("Server error occured", e));
+      .catch((e) => {
+        toast.warning("Server error occured", e);
+        navigate("/login");
+      });
   };
 
   const isLoggedIn = () => {
@@ -105,23 +113,23 @@ export const UserProvider = ({ children }: Props) => {
   };
 
   const logout = async () => {
-    const refresh_token = localStorage.getItem("refresh");
+    const refresh_token = sessionStorage.getItem("refresh");
     setRefresh(refresh_token);
     refresh &&
       (await logoutAPI(refresh)
         .then((res) => {
           if (res?.status === 200) {
             axios.defaults.headers.delete;
-            localStorage.removeItem("access");
-            localStorage.removeItem("refresh");
-            localStorage.removeItem("user");
+            sessionStorage.removeItem("access");
+            sessionStorage.removeItem("refresh");
+            sessionStorage.removeItem("user");
             setUser(null);
             setAccess(null);
             setRefresh(null);
           }
         })
-        .catch((e) => toast.warning("로그아웃에 실패했습니다.", e))
-        .finally(() => navigate("/login")));
+        .then(() => navigate("/login"))
+        .catch((e) => toast.warning("로그아웃에 실패했습니다.", e)));
   };
 
   return (

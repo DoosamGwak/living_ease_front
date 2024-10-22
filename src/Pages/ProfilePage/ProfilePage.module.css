@@ -57,9 +57,10 @@
   margin-top: 0;
 }
 
-.content-info a {
+.content-info span {
   text-decoration: none;
   color: #000;
+  cursor: pointer;
 }
 
 .move-top-body {
@@ -80,6 +81,12 @@
   padding: 12px 0;
   text-align: center;
   border-right: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.move-body td a {
+  text-decoration: none;
+  color: #000;
 }
 
 .move-body tr:first-child td {

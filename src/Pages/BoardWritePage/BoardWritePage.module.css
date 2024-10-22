@@ -107,6 +107,7 @@
   float: left;
   margin-right: 10px;
   cursor: pointer;
+  line-height: 10vh;
 }
 
 .picture-preview {

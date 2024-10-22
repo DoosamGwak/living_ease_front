@@ -8,7 +8,6 @@ import profileIcon5 from "./asset/profile_icon5.png";
 import profileIcon6 from "./asset/profile_icon6.png";
 import profileTopBtn from "./asset/profile_top_bt.png";
 import moveBtn from "./asset/move_bt.png";
-import info1 from "./asset/info_001.png";
 import { useAuth } from "../../Context/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -22,6 +21,9 @@ const ProfilePage = () => {
   const { user, logout } = useAuth();
   const [userProfile, setUserProfile] = useState<UserProfileDetail>();
   const navigate = useNavigate();
+  const notYetToast = () => {
+    toast("서비스 준비중");
+  };
   useEffect(() => {
     const getUserInfo = async () => {
       const userObj = user;
@@ -41,7 +43,7 @@ const ProfilePage = () => {
         </a>
         <div className={cx("user-info")}>
           <div className={cx("left-info")}>
-            <img src={info1} alt="프로필 사진" />
+            <img src={userProfile?.profile_image} alt="프로필 사진" />
           </div>
           <div className={cx("right-info")}>
             <h3>{userProfile?.nickname}</h3>
@@ -51,42 +53,42 @@ const ProfilePage = () => {
       </div>
       <div className={cx("content-info")}>
         <div className={cx("move-top-body")}>
-          <a href="">
+          <span onClick={notYetToast}>
             <img src={profileTopBtn} alt="애견수첩" />
-          </a>
+          </span>
         </div>
         <table className={cx("move-body")}>
           <tbody>
             <tr>
               <td>
-                <a href="">
+                <span onClick={notYetToast}>
                   <img src={profileIcon1} alt="게시물 관리" />
                   게시물 관리
-                </a>
+                </span>
               </td>
               <td>
-                <a href="">
+                <span onClick={notYetToast}>
                   <img src={profileIcon2} alt="내 댓글" />내 댓글
-                </a>
+                </span>
               </td>
               <td>
-                <a href="">
+                <span onClick={notYetToast}>
                   <img src={profileIcon3} alt="찜 목록" />찜 목록
-                </a>
+                </span>
               </td>
             </tr>
             <tr>
               <td>
-                <a href="">
+                <span onClick={notYetToast}>
                   <img src={profileIcon4} alt="매칭 결과" />
                   매칭 결과
-                </a>
+                </span>
               </td>
               <td>
-                <a href="">
+                <Link to={"/support/directmsg"}>
                   <img src={profileIcon5} alt="1:1 문의" />
                   1:1 문의
-                </a>
+                </Link>
               </td>
               <td>
                 <Link to="/profile/edit">
@@ -99,19 +101,22 @@ const ProfilePage = () => {
         </table>
       </div>
       <div className={cx("content-bottom")}>
-        <a href="">
+        <Link to={"/support/directmsg"}>
           <div className={cx("support-bottom-left")}>
             <h3>
               고객센터<span>(평일 09:00~18:00)</span>
             </h3>
             <p>02-1234-5678</p>
           </div>
-          <div className={cx("support-bottom-right")}>
+          <div
+            className={cx("support-bottom-right")}
+            onClick={() => navigate("/support/notice")}
+          >
             <img src={moveBtn} alt="" />
           </div>
-        </a>
+        </Link>
         <div className={cx("profile-bottom-btn-body")}>
-          <button onClick={() => logout}>로그아웃</button>
+          <button onClick={() => logout()}>로그아웃</button>
           <button onClick={() => toast("아직 미구현")}>회원탈퇴</button>
         </div>
       </div>

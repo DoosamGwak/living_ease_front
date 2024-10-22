@@ -3,12 +3,14 @@ export interface BoardListGet {
     "title": string,
     "nickname": string,
     "content_snippet": string,
+    "created_at": string,
 }
 
 export interface BoardDetailGet {
     "id": number,
     "title": string,
     "content": string,
+    "images": any,
     "nickname": string,
     "comments_count": number,
     "category": string,

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { handleError } from "../Helpers/ErrorHandler";
-import { UserProfileToken } from "../Models/User";
+import { UserProfileDetail, UserProfileToken } from "../Models/User";
 import { api } from "./ApiURL";
 import { redirect } from "react-router-dom";
 
@@ -48,11 +48,26 @@ export const logoutAPI = async (refresh: string) => {
 
 export const getProfileAPI = async (pk: number) => {
   try {
-    const res = await axios.get(api + `/accounts/profile/${pk}/`);
+    const res = await axios.get<UserProfileDetail>(
+      api + `/accounts/profile/${pk}/`
+    );
     return res;
   } catch (error) {
     handleError(error);
     console.log(error);
+  }
+};
+
+export const updateProfileAPI = async (pk: number, form: FormData) => {
+  try {
+    const res = await axios.put(api + `/accounts/profile/${pk}/`, form, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res;
+  } catch (error) {
+    handleError(error);
   }
 };
 
