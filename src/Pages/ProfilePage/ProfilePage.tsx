@@ -101,7 +101,7 @@ const ProfilePage = () => {
         </table>
       </div>
       <div className={cx("content-bottom")}>
-        <Link to={"/support/directmsg"}>
+        <Link to={"/support/notice"}>
           <div className={cx("support-bottom-left")}>
             <h3>
               고객센터<span>(평일 09:00~18:00)</span>

@@ -136,6 +136,14 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/notfound",
+        element: (
+          <ProtectedRoute>
+            <NotFoundPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);

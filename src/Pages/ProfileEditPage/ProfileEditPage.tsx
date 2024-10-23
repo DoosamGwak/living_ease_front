@@ -16,6 +16,7 @@ type ProfileEditInput = {
   nickname: string;
   age: number | null;
   gender: string;
+  name: string | null;
 };
 
 const ProfileEditPage = () => {
@@ -67,6 +68,7 @@ const ProfileEditPage = () => {
     const formData = new FormData();
     userObj && formData.append("email", userObj.email);
     formData.append("nickname", form.nickname);
+    form.name && formData.append("name", form.name.toString());
     form.age && formData.append("age", form.age.toString());
     formData.append("gender", form.gender);
     form.profile_image && formData.append("profile_image", form.profile_image);
@@ -114,9 +116,11 @@ const ProfileEditPage = () => {
             <label htmlFor="name">이름</label>
             <input
               type="text"
-              name="name"
               id="name"
-              defaultValue={userProfile?.nickname}
+              {...register("name")}
+              defaultValue={
+                !!userProfile?.name ? userProfile.name : userProfile?.nickname
+              }
             />
           </div>
           <div className={cx("rows")}>
@@ -126,8 +130,8 @@ const ProfileEditPage = () => {
             <input
               type="text"
               id="nickname"
-              defaultValue={userProfile?.nickname}
               {...register("nickname", { required: true })}
+              defaultValue={userProfile?.nickname}
             />
             {errors.nickname && errors.nickname.type === "required" && (
               <p className={cx("password-warning")}>
@@ -155,18 +159,18 @@ const ProfileEditPage = () => {
               <input
                 type="number"
                 id="age"
-                defaultValue={userProfile?.age?.toString()}
                 min="1"
                 max="100"
                 {...register("age")}
+                defaultValue={userProfile?.age?.toString()}
               />
             </div>
             <div>
               <label htmlFor="gender">성별</label>
               <select
                 id="gender"
-                defaultValue={userProfile && `${userProfile?.gender}`}
                 {...register("gender")}
+                defaultValue={userProfile && `${userProfile?.gender}`}
               >
                 <option value="F">여성</option>
                 <option value="M">남성</option>

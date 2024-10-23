@@ -28,3 +28,18 @@ export type AIChatModel = {
     response: string
     session_id: string
 }
+
+export type CaresListModel = {
+    item: CareModel[]
+    pageNo: number
+    totalCount: number
+}
+
+export type CareModel = {
+    name: string
+    popfile: string
+    age: string
+    sexCd: string
+    careNm: string
+    careAddr: string
+}

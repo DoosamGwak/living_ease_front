@@ -17,6 +17,7 @@
 
 .row p.board-content {
   word-break: break-all;
+  white-space: pre-wrap;
   /* visibility: hidden;
   opacity: 0;
   animation: fadeIn 0.5s forwards;
@@ -38,6 +39,7 @@
   height: 30px;
   float: right;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .onoff-bt.active {

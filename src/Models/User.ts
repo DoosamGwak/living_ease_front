@@ -13,6 +13,7 @@ export type UserProfile = {
   };
 
   export type UserProfileDetail = {
+    name:string | null
     nickname: string;
     email: string;
     profile_image: string;

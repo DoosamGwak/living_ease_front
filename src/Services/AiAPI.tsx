@@ -1,5 +1,10 @@
 import axios from "axios";
-import { AIChatModel, AIQModel, AIRsModel } from "../Models/AIQ";
+import {
+  AIChatModel,
+  AIQModel,
+  AIRsModel,
+  CaresListModel,
+} from "../Models/AIQ";
 import { handleError } from "../Helpers/ErrorHandler";
 import { api } from "./ApiURL";
 
@@ -42,6 +47,25 @@ export const AIChatPostAPI = async (
       input: input,
       session_id: session_id,
     });
+    return res;
+  } catch (error) {
+    console.log(error);
+    handleError(error);
+  }
+};
+
+export const CaresListGetAPI = async (
+  animal_name: string,
+  page: number,
+  address: string | null
+) => {
+  try {
+    const res = await axios.get<CaresListModel>(
+      api + "/pets/metching-center/",
+      {
+        params: { animal_name: animal_name, page: page, address: address },
+      }
+    );
     return res;
   } catch (error) {
     console.log(error);

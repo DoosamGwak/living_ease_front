@@ -15,9 +15,9 @@ export const boardPutAPI = async (title: string, content: string) => {
   }
 };
 
-export const boardDeleteAPI = async () => {
+export const boardDeleteAPI = async (pk: number) => {
   try {
-    const res = await axios.delete(api + "/boards/");
+    const res = await axios.delete(api + `/boards/${pk}/`);
     return res;
   } catch (error) {
     handleError(error);
