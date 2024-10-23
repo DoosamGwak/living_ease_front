@@ -23,11 +23,31 @@ footer {
   font-weight: 700;
   cursor: pointer;
   width: 20%;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
+  position: relative;
+}
+
+.footer .profile {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer span {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  padding-top: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 20%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
   text-align: center;
+  position: relative;
 }
 
 .footer p {
@@ -41,20 +61,26 @@ footer {
   font-weight: bold;
 }
 
-.footer img {
+.footer .icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 5px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.footer .chat {
   width: 55px;
   height: 55px;
   margin-bottom: 5px;
   position: absolute;
-  top: -25px;
+  top: -35px;
 }
 
 @media (max-width: 500px) {
   .footer {
     width: 100%;
-  }
-  .footer img {
-    width: 55px;
-    height: 55px;
   }
 }

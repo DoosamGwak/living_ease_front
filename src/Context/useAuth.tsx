@@ -53,7 +53,7 @@ export const UserProvider = ({ children }: Props) => {
   ) => {
     await signupAPI(email, nickname, password, password2)
       .then((res) => {
-        if (res) {
+        if (res?.status === 201) {
           const userObj = {
             pk: res?.data.pk,
             nickname: res?.data.nickname,
@@ -69,12 +69,14 @@ export const UserProvider = ({ children }: Props) => {
           setRefresh(res?.data.refresh!);
           setUser(userObj!);
           toast.success("로그인 완료");
+          navigate("/");
+        } else {
+          toast.error("로그인 실패");
+          navigate("/signup");
         }
       })
-      .then(() => navigate("/"))
       .catch((e) => {
         toast.warning("Server error occured", e);
-        navigate("/signup");
       });
   };
 
@@ -98,7 +100,7 @@ export const UserProvider = ({ children }: Props) => {
           toast.success("로그인 완료");
           navigate("/");
         } else {
-          toast.success("로그인에 실패하셨습니다.");
+          toast.error("로그인에 실패하셨습니다.");
           navigate("/login");
         }
       })

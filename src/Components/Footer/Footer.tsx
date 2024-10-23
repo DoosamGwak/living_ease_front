@@ -3,6 +3,10 @@ import classNames from "classnames/bind";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../Context/useAuth";
 import AIIcon from "./asset/AI_icon.png";
+import profileIcon from "./asset/profile.png";
+import mapIcon from "./asset/map.png";
+import homeIcon from "./asset/home.png";
+import categoryIcon from "./asset/category.png";
 import CategoryModal from "../CategoryModal/CategoryModal";
 import { useEffect, useState } from "react";
 
@@ -28,17 +32,31 @@ const Footer = () => {
   return (
     <>
       <footer className={cx("footer")}>
-        <Link to="/home">홈</Link>
-        <a onClick={onModal}>카테고리</a>
+        <Link to="/home">
+          <img className={cx("icon")} src={homeIcon} alt="팻밀리 AI" />홈
+        </Link>
+        <span onClick={onModal}>
+          <img className={cx("icon")} src={categoryIcon} alt="팻밀리 AI" />
+          카테고리
+        </span>
         <Link to="/aichat">
-          <img src={AIIcon} alt="팻밀리 AI" />
+          <img className={cx("chat")} src={AIIcon} alt="팻밀리 AI" />
           펫밀리 AI
         </Link>
-        <Link to="/location">Map</Link>
+        <Link to="/location">
+          <img className={cx("icon")} src={mapIcon} alt="팻밀리 AI" />
+          Map
+        </Link>
         {isLoggedIn() ? (
-          <Link to="/profile/detail">{user?.nickname}</Link>
+          <Link className={cx("profile")} to="/profile/detail">
+            <img className={cx("icon")} src={profileIcon} alt="팻밀리 AI" />
+            {user?.nickname}
+          </Link>
         ) : (
-          <Link to="/login">로그인</Link>
+          <Link to="/login">
+            <img className={cx("icon")} src={profileIcon} alt="팻밀리 AI" />
+            로그인
+          </Link>
         )}
       </footer>
       {activeModal ? <CategoryModal onActive={onModal} /> : null}
