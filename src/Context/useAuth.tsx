@@ -53,7 +53,7 @@ export const UserProvider = ({ children }: Props) => {
   ) => {
     await signupAPI(email, nickname, password, password2)
       .then((res) => {
-        if (res?.status === 201) {
+        if (res?.status === 200) {
           const userObj = {
             pk: res?.data.pk,
             nickname: res?.data.nickname,
